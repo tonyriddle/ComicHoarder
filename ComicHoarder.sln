@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.Repository", "ComicHoarder.Data\ComicHoarder.Repository.csproj", "{0938C34C-65B8-421C-9611-F1C4AE13CF87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.WebData", "ComicHoarder.WebData\ComicHoarder.WebData.csproj", "{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.EComic", "ComicHoarder.EComic\ComicHoarder.EComic.csproj", "{004F1B20-7AEA-4F7A-994A-71350FEC769C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.Tests", "ComicHoarder.Tests\ComicHoarder.Tests.csproj", "{42D197FA-6215-41F7-B020-52742DA4B66E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{69997933-A275-4F70-A140-09DDB7ED75EE}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Blue Beetle 001 (1967) June-1967.cbz = Documentation\Blue Beetle 001 (1967) June-1967.cbz
+		Documentation\Blue Beetle 002 (1967) August-1967.cbz = Documentation\Blue Beetle 002 (1967) August-1967.cbz
+		Documentation\Blue Beetle 003 (1967) October-1967.cbz = Documentation\Blue Beetle 003 (1967) October-1967.cbz
+		Documentation\Blue Beetle 004 (1967) December-1967.cbz = Documentation\Blue Beetle 004 (1967) December-1967.cbz
+		Documentation\Blue Beetle 005 (1967) November-1968.cbz = Documentation\Blue Beetle 005 (1967) November-1968.cbz
+		Documentation\ComicInfoBlueBeetle1.xml = Documentation\ComicInfoBlueBeetle1.xml
+		Documentation\comicvineapi.txt = Documentation\comicvineapi.txt
+		Documentation\Creating Classes from ComicVine XML.docx = Documentation\Creating Classes from ComicVine XML.docx
+		Documentation\issue.xml = Documentation\issue.xml
+		Documentation\PublisherFiltered.xml = Documentation\PublisherFiltered.xml
+		Documentation\publishersearch.xml = Documentation\publishersearch.xml
+		Documentation\PublisherUnfiltered.xml = Documentation\PublisherUnfiltered.xml
+		Documentation\volume.xml = Documentation\volume.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder", "ComicHoarder\ComicHoarder.csproj", "{C446FB3E-D9C5-4EA6-935E-ABB51E4B4761}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{EB5FD844-7133-4327-B7DC-801A2AF88DD9}"
+	ProjectSection(SolutionItems) = preProject
+		Libraries\Ionic.Zip.Reduced.dll = Libraries\Ionic.Zip.Reduced.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.Common", "ComicHoarder.Common\ComicHoarder.Common.csproj", "{47445416-9933-44F0-B74D-4AB9F7D67E29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SubDirectory", "SubDirectory", "{1D3AE9CF-6702-4528-AFEE-3890FEA2AFED}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\Blue Beetle 006 (1967) April-1967.cbz = Documentation\Blue Beetle 006 (1967) April-1967.cbz
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0938C34C-65B8-421C-9611-F1C4AE13CF87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0938C34C-65B8-421C-9611-F1C4AE13CF87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0938C34C-65B8-421C-9611-F1C4AE13CF87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0938C34C-65B8-421C-9611-F1C4AE13CF87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004F1B20-7AEA-4F7A-994A-71350FEC769C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004F1B20-7AEA-4F7A-994A-71350FEC769C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004F1B20-7AEA-4F7A-994A-71350FEC769C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004F1B20-7AEA-4F7A-994A-71350FEC769C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42D197FA-6215-41F7-B020-52742DA4B66E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D197FA-6215-41F7-B020-52742DA4B66E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D197FA-6215-41F7-B020-52742DA4B66E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D197FA-6215-41F7-B020-52742DA4B66E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C446FB3E-D9C5-4EA6-935E-ABB51E4B4761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C446FB3E-D9C5-4EA6-935E-ABB51E4B4761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C446FB3E-D9C5-4EA6-935E-ABB51E4B4761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C446FB3E-D9C5-4EA6-935E-ABB51E4B4761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47445416-9933-44F0-B74D-4AB9F7D67E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47445416-9933-44F0-B74D-4AB9F7D67E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47445416-9933-44F0-B74D-4AB9F7D67E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47445416-9933-44F0-B74D-4AB9F7D67E29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1D3AE9CF-6702-4528-AFEE-3890FEA2AFED} = {69997933-A275-4F70-A140-09DDB7ED75EE}
+	EndGlobalSection
+EndGlobal

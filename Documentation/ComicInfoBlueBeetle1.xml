@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<ComicInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Title>Bugs the Squids</Title>
+  <Series>Blue Beetle</Series>
+  <Number>1</Number>
+  <Volume>1967</Volume>
+  <Summary>The Squid Gang crash the party for some very rich people. But Blue Beetle is their to thwart their attempts. 
+Once the Blue Beetle stops their attempts at a heist in the apartment, they flee. 
+They spring back up at a boat and almost succeed in escaping with their loot when the Blue Beetle crashes the party once again. And this time they put up a fight but soon Ted is able to capture them and hand them over to the police. 
+Who is The Question 
+In the Questions first debut he uncovers a mans racketeering ring. And is able to catch the mans shady dealings on camera and the authorities are able to arrest him.</Summary>
+  <Notes>Scraped metadata from ComicVine [CVDB9383] on 2013.06.03 23:14:42.</Notes>
+  <Year>1967</Year>
+  <Month>6</Month>
+  <Writer>Steve Ditko</Writer>
+  <Penciller>Steve Ditko</Penciller>
+  <Inker>Steve Ditko</Inker>
+  <Publisher>Charlton</Publisher>
+  <Web>http://www.comicvine.com/blue-beetle-1-bugs-the-squids/4000-9383/</Web>
+  <PageCount>36</PageCount>
+  <Characters>Jim Lark, Lou Dicer, Squid Gang, Ted Kord, Vic Sage</Characters>
+  <Teams>Squid Gang</Teams>
+  <Pages>
+    <Page Image="0" ImageWidth="868" ImageHeight="1291" Type="FrontCover" />
+    <Page Image="1" ImageWidth="754" ImageHeight="1213" />
+    <Page Image="2" />
+    <Page Image="3" />
+    <Page Image="4" />
+    <Page Image="5" />
+    <Page Image="6" />
+    <Page Image="7" />
+    <Page Image="8" />
+    <Page Image="9" />
+    <Page Image="10" />
+    <Page Image="11" />
+    <Page Image="12" />
+    <Page Image="13" />
+    <Page Image="14" />
+    <Page Image="15" />
+    <Page Image="16" />
+    <Page Image="17" />
+    <Page Image="18" />
+    <Page Image="19" />
+    <Page Image="20" />
+    <Page Image="21" />
+    <Page Image="22" />
+    <Page Image="23" />
+    <Page Image="24" />
+    <Page Image="25" />
+    <Page Image="26" />
+    <Page Image="27" />
+    <Page Image="28" />
+    <Page Image="29" />
+    <Page Image="30" />
+    <Page Image="31" />
+    <Page Image="32" />
+    <Page Image="33" />
+    <Page Image="34" />
+    <Page Image="35" />
+  </Pages>
+</ComicInfo>

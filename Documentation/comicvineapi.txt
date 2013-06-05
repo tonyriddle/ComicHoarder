@@ -1,0 +1,33 @@
+http://api.comicvine.com/character/248/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&format=xml
+
+http://api.comicvine.com/publisher/31/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&field_list=volumes&format=xml
+
+
+31 = marvel
+
+finished publisher search query:
+
+http://api.comicvine.com/search/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&resources=publisher&query=marvel&format=xml&field_list=api_detail_url,name,id,deck
+
+
+publisher query:
+
+http://api.comicvine.com/publisher/31/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&field_list=volumes&format=xml
+        
+http://www.comicvine.com/api/publisher/4010-125/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&format=xml
+volume query:
+
+http://api.comicvine.com/volume/27603/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&format=xml&field_list=api_detail_url,date_last_updated,count_of_issues,id,issues,name,concept_credits
+
+
+issue query:
+
+http://api.comicvine.com/issue/187507/?api_key=c562cec823cc6cf7b2513420a05de943479c68f4&format=xml&field_list=api_detail_url,date_last_updated,deck,id,issue_number,publish_month,publish_year,name
+
+Resource id's
+4000 issue
+4005 character
+4010 publisher
+4015 concept
+4020 location
+4050 volume

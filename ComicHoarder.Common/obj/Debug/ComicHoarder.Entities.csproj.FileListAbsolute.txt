@@ -1,0 +1,13 @@
+F:\TestWPFApp\ComicHoarder.Entities\bin\Debug\ComicHoarder.Entities.dll
+F:\TestWPFApp\ComicHoarder.Entities\bin\Debug\ComicHoarder.Entities.pdb
+F:\TestWPFApp\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.dll
+F:\TestWPFApp\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.pdb
+F:\ComicHoarder\ComicHoarder.Entities\bin\Debug\ComicHoarder.Entities.dll
+F:\ComicHoarder\ComicHoarder.Entities\bin\Debug\ComicHoarder.Entities.pdb
+F:\ComicHoarder\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.dll
+F:\ComicHoarder\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.pdb
+C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Entities\bin\Debug\ComicHoarder.Entities.dll
+C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Entities\bin\Debug\ComicHoarder.Entities.pdb
+C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.csprojResolveAssemblyReference.cache
+C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.dll
+C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Entities\obj\Debug\ComicHoarder.Entities.pdb
