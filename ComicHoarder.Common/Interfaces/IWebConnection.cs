@@ -1,7 +1,7 @@
 ﻿using System;
 namespace ComicHoarder.Common
 {
-    public interface IConnection
+    public interface IWebConnection
     {
         string Query(string Url);
     }

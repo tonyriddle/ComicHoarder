@@ -11,6 +11,18 @@ namespace ComicHoarder.WebData
 {
     public class ComicVineConverter : IWebDataConverter
     {
+        IComicVineReprintDetector reprintDetector;
+
+        public ComicVineConverter()
+        {
+            reprintDetector = new ComicVineReprintDetector();
+        }
+
+        public ComicVineConverter(IComicVineReprintDetector reprintDetector)
+        {
+            this.reprintDetector = reprintDetector;
+        }
+
         public Issue ConvertToIssue(string xml)
         {
             Issue issue = new Issue();
@@ -54,7 +66,7 @@ namespace ComicHoarder.WebData
             volume.description = response.results[0].deck;
             volume.dateAdded = ParseHelper.ParseDateTime(response.results[0].date_added);
             volume.dateLastUpdated = ParseHelper.ParseDateTime(response.results[0].date_last_updated);
-            volume.collectable = true; //TODO: Put in collectabletester here
+            volume.collectable = true;
             volume.countOfIssues = ParseHelper.ParseInt(response.results[0].count_of_issues);
             volume.startYear = ParseHelper.ParseInt(response.results[0].start_year);
             volume.enabled = true;
@@ -66,6 +78,7 @@ namespace ComicHoarder.WebData
             {
                 volume.complete = true;
             }
+            reprintDetector.DetectReprint(volume);
             return volume;
         }
 

@@ -29,8 +29,7 @@ namespace ComicHoarder.Common
             return d;
         }
 
-
-        internal static bool ParseBool(string p)
+        public static bool ParseBool(string p)
         {
             if (p == "True")
             {

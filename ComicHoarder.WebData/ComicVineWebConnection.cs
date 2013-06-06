@@ -9,7 +9,7 @@ using System.Net;
 
 namespace ComicHoarder.WebData
 {
-    public class ComicVineConnection : IConnection
+    public class ComicVineWebConnection : IWebConnection
     {
         public string Query(string Url)
         {

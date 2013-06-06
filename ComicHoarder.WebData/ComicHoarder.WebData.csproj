@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComicVineConnection.cs" />
+    <Compile Include="ComicVineReprintDetector.cs" />
+    <Compile Include="ComicVineWebConnection.cs" />
     <Compile Include="ComicVineURLBuilder.cs" />
     <Compile Include="Models\CVQuery.Issue.cs" />
     <Compile Include="Models\CVQuery.Publisher.cs" />

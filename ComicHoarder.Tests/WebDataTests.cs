@@ -11,6 +11,20 @@ namespace ComicHoarder.Tests
     [TestClass]
     public class WebDataTests
     {
+        IWebDataConverter converter;
+        IURLBuilder urlBuilder;
+        IWebConnection fakeConnection;
+        IWebDataService service;
+
+        [TestInitialize]
+        public void Setup()
+        {
+            converter = new ComicVineConverter();
+            urlBuilder = new ComicVineURLBuilder("[TestKey]");
+            fakeConnection = new TestWebConnection();
+            service = new WebDataService(fakeConnection, converter, urlBuilder);
+        }
+
         string TestXMLComicVinePublisherUnFilteredFileName = @"../../../Documentation/PublisherUnfiltered.xml";
         string TestXMLComicVineVolumeUnFilteredFileName = @"../../../Documentation/volume.xml";
         string TestXMLComicVineIssueUnFilteredFileName = @"../../../Documentation/issue.xml";
@@ -98,10 +112,6 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetPublisherFromWebDataService()
         {
-            IConnection connection = new PublisherConnection();
-            IWebDataConverter converter = new ComicVineConverter();
-            IURLBuilder builder = new ComicVineURLBuilder("1234");
-            WebDataService service = new WebDataService(connection, converter, builder);
             Publisher publisher = service.GetPublisher(31);
             Assert.IsTrue(publisher.id == 125); //remember, we are using the dummy publisher xml file from above
         }
@@ -109,10 +119,6 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetVolumesFromPublisherFromWebDataService()
         {
-            IConnection connection = new PublisherConnection();
-            IWebDataConverter converter = new ComicVineConverter();
-            IURLBuilder builder = new ComicVineURLBuilder("1234");
-            WebDataService service = new WebDataService(connection, converter, builder);
             List<Volume> volumes = service.GetVolumesFromPublisher(31);
             Assert.IsTrue(volumes[0].id == 1533);
             Assert.IsTrue(volumes.Count == 335);
@@ -150,11 +156,7 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetVolumeFromWebDataService()
         {
-            IConnection connection = new VolumeConnection();
-            IWebDataConverter converter = new ComicVineConverter();
-            IURLBuilder builder = new ComicVineURLBuilder("1234");
-            WebDataService service = new WebDataService(connection, converter, builder);
-            Volume volume = service.GetVolume(31);
+            Volume volume = service.GetVolume(1234);
             Assert.IsTrue(volume.id == 2189); //remember, we are using the dummy publisher xml file from above
         }
 
@@ -177,11 +179,7 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetIssuesFromVolumeFromWebDataService()
         {
-            IConnection connection = new VolumeConnection();
-            IWebDataConverter converter = new ComicVineConverter();
-            IURLBuilder builder = new ComicVineURLBuilder("1234");
-            WebDataService service = new WebDataService(connection, converter, builder);
-            List<Issue> issues = service.GetIssuesFromVolume(31);
+            List<Issue> issues = service.GetIssuesFromVolume(1234);
             Assert.IsTrue(issues[0].id == 337485);
             Assert.IsTrue(issues.Count == 39);
             Assert.IsTrue(issues[0].name == "Spider Who?");
@@ -222,11 +220,7 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetIssueFromWebDataService()
         {
-            IConnection connection = new IssueConnection();
-            IWebDataConverter converter = new ComicVineConverter();
-            IURLBuilder builder = new ComicVineURLBuilder("1234");
-            WebDataService service = new WebDataService(connection, converter, builder);
-            Issue issue = service.GetIssue(31);
+            Issue issue = service.GetIssue(1234);
             Assert.IsTrue(issue.id == 187507);
             Assert.IsTrue(issue.name == " ");
             Assert.IsTrue(issue.publishYear == 0);
@@ -237,73 +231,50 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanConvertSearchPublisherToPublisher()
         {
-            IConnection connection = new PublisherSearchConnection();
-            IWebDataConverter converter = new ComicVineConverter();
-            IURLBuilder builder = new ComicVineURLBuilder("1234");
-            WebDataService service = new WebDataService(connection, converter, builder);
             List<Publisher> publishers = service.SearchPublishers("Marvel");
             Assert.IsTrue(publishers[0].id == 31); //remember, we are using the dummy publisher xml file from above
         }
-    }
 
-    public class PublisherConnection : IConnection
-    {
-        public string Query(string Url)
+        [TestMethod]
+        public void CanDetectReprint()
         {
-            string TestXMLComicVinePublisherUnFilteredFileName = @"../../../Documentation/PublisherUnfiltered.xml";
-            string result = "";
+            IComicVineReprintDetector reprintDetector = new ComicVineReprintDetector();
+            Volume volume = new Volume();
+            volume.collectable = true;
+            volume.description = "reprints spider-man 1 to 650";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
+            volume.collectable = true;
+            volume.description = "this is a tradepaperback";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
+            volume.collectable = true;
+            volume.description = "tpb of spider-man 1 to 650";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
+            volume.collectable = true;
+            volume.description = "a hardcover book which reprints spider-man 1 to 650";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
+            volume.collectable = true;
+            volume.description = "spider-man trade paperback of 1 to 650";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
+            volume.collectable = true;
+            volume.description = "reprints spider-man 1 to 650";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
+        }
 
-            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherUnFilteredFileName))
-            {
-                result = sr.ReadToEnd();
-            }
-            return result;
+        [TestMethod]
+        public void CanDetectIfNotReprint()
+        {
+            IComicVineReprintDetector reprintDetector = new ComicVineReprintDetector();
+            Volume volume = new Volume();
+            volume.collectable = true;
+            volume.description = "this is the amazing spider-man";
+            Assert.IsFalse(reprintDetector.DetectReprint(volume));
+            Assert.IsTrue(volume.collectable);
         }
     }
-
-    public class PublisherSearchConnection : IConnection
-    {
-        public string Query(string Url)
-        {
-            string TestXMLComicVinePublisherUnFilteredFileName = @"../../../Documentation/publishersearch.xml";
-            string result = "";
-
-            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherUnFilteredFileName))
-            {
-                result = sr.ReadToEnd();
-            }
-            return result;
-        }
-    }
-
-    public class VolumeConnection : IConnection
-    {
-        public string Query(string Url)
-        {
-            string TestXMLComicVineVolumeUnFilteredFileName = @"../../../Documentation/volume.xml";
-            string result = "";
-
-            using (StreamReader sr = new StreamReader(TestXMLComicVineVolumeUnFilteredFileName))
-            {
-                result = sr.ReadToEnd();
-            }
-            return result;
-        }
-    }
-
-    public class IssueConnection : IConnection
-    {
-        public string Query(string Url)
-        {
-            string TestXMLComicVineIssueUnFilteredFileName = @"../../../Documentation/issue.xml";
-            string result = "";
-
-            using (StreamReader sr = new StreamReader(TestXMLComicVineIssueUnFilteredFileName))
-            {
-                result = sr.ReadToEnd();
-            }
-            return result;
-        }
-    }
-
 }

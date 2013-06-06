@@ -9,11 +9,11 @@ namespace ComicHoarder.WebData
 {
     public class WebDataService : IWebDataService
     {
-        IConnection connection;
+        IWebConnection connection;
         IWebDataConverter converter;
         IURLBuilder urlBuilder;
 
-        public WebDataService(IConnection connection, IWebDataConverter converter, IURLBuilder urlBuilder)
+        public WebDataService(IWebConnection connection, IWebDataConverter converter, IURLBuilder urlBuilder)
         {
             this.connection = connection;
             this.converter = converter;
@@ -22,7 +22,7 @@ namespace ComicHoarder.WebData
 
         public WebDataService(string key)
         {
-            this.connection = new ComicVineConnection();
+            this.connection = new ComicVineWebConnection();
             this.converter = new ComicVineConverter();
             this.urlBuilder = new ComicVineURLBuilder(key);
         }

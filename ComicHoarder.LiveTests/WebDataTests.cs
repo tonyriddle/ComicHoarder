@@ -11,7 +11,7 @@ namespace ComicHoarder.LiveTests
         [TestMethod]
         public void CanGetVolumeFromComicVine()
         {
-            IConnection connection = new ComicVineConnection();
+            IWebConnection connection = new ComicVineWebConnection();
             IWebDataConverter converter = new ComicVineConverter();
             IURLBuilder builder = new ComicVineURLBuilder("c562cec823cc6cf7b2513420a05de943479c68f4");
             WebDataService service = new WebDataService(connection, converter, builder);
@@ -22,7 +22,7 @@ namespace ComicHoarder.LiveTests
         [TestMethod]
         public void CanGetVolumeFromComicVineAndMarkAsNotCollectable()
         {
-            IConnection connection = new ComicVineConnection();
+            IWebConnection connection = new ComicVineWebConnection();
             IWebDataConverter converter = new ComicVineConverter();
             IURLBuilder builder = new ComicVineURLBuilder("c562cec823cc6cf7b2513420a05de943479c68f4");
             WebDataService service = new WebDataService(connection, converter, builder);
