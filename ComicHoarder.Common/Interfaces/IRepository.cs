@@ -29,5 +29,6 @@ namespace ComicHoarder.Common
         bool VolumeExists(int id);
         bool IssueExists(int id);
         bool UpdateIssueToCollected(int id);
+        string GetWebServiceKey(string name);
     }
 }

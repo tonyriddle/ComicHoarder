@@ -118,7 +118,7 @@ namespace ComicHoarder
 
         public bool Save(List<Publisher> publishers)
         {
-            int rowsupdated = 0;
+            int rowsupdated = 0; //TODO make this work right and be threaded and update the interface instead of having this in here to watch while running
             int errors = 0;
             foreach (Publisher publisher in publishers)
             {
@@ -132,7 +132,7 @@ namespace ComicHoarder
                 }
             }
 
-            if (errors != 0) //TODO put in transaction, this is returning false for any error in the group
+            if (errors != 0) //TODO put in transaction, this is returning false for any error in the group/or write errors to screen and save others
             {
                 return false;
             }
@@ -774,6 +774,20 @@ namespace ComicHoarder
             else
             {
                 return p;
+            }
+        }
+
+
+        public string GetWebServiceKey(string name)
+        {
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                SqlCommand command = new SqlCommand("select value from settings where name = @name", con);
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = name;
+                SqlDataAdapter ad = new SqlDataAdapter(command);
+                DataSet ds = new DataSet("issue");
+                ad.Fill(ds);
+                return ds.Tables[0].Rows[0]["value"].ToString();
             }
         }
     }

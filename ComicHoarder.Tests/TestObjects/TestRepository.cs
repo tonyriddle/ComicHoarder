@@ -17,17 +17,17 @@ namespace ComicHoarder.Tests
             {
                 new Publisher 
                 {
-                    id = 1,
+                    id = -1,
                     name = "Marvel"
                 },
                 new Publisher 
                 {
-                    id = 2,
+                    id = -2,
                     name = "DC"
                 },
                 new Publisher 
                 {
-                    id = 3,
+                    id = -3,
                     name = "Charlton"
                 }
             };
@@ -36,17 +36,17 @@ namespace ComicHoarder.Tests
             {
                 new Volume 
                 {
-                    id = 1,
+                    id = -1,
                     name = "Blue Beetle"
                 },
                 new Volume
                 {
-                    id = 2,
+                    id = -2,
                     name = "Captain Marvel"
                 },
                 new Volume
                 {
-                    id = 3,
+                    id = -3,
                     name = "The Phantom"
                 }
             };
@@ -55,17 +55,17 @@ namespace ComicHoarder.Tests
             {
                 new Issue
                 {
-                    id = 1,
+                    id = -1,
                     name = "Bugs the Squids"
                 },
                 new Issue
                 {
-                    id = 2,
+                    id = -2,
                     name = "To the Moon"
                 },
                 new Issue
                 {
-                    id = 3,
+                    id = -3,
                     name = "Horses, Horses, Horses"
                 }
             };
@@ -74,19 +74,19 @@ namespace ComicHoarder.Tests
             {
                 new MissingIssue
                 {
-                    id = 1,
+                    id = -1,
                     name = "Bugs the Squids",
                     volume_name = "Blue Beetle"
                 },
                 new MissingIssue
                 {
-                    id = 2,
+                    id = -2,
                     name = "To the Moon",
                     volume_name = "Captain Marvel"
                 },
                 new MissingIssue
                 {
-                    id = 3,
+                    id = -3,
                     name = "Horses, Horses, Horses",
                     volume_name = "The Phantom"
                 }
@@ -222,6 +222,12 @@ namespace ComicHoarder.Tests
         public bool UpdateIssueToCollected(int id)
         {
             return true;
+        }
+
+
+        public string GetWebServiceKey(string name)
+        {
+            return "12345678";
         }
     }
 }

@@ -11,24 +11,42 @@ namespace ComicHoarder.Tests
     [TestClass]
     public class WebDataTests
     {
+        string testMode = "Test";
+        //string testMode = "Live";
+
         IWebDataConverter converter;
         IURLBuilder urlBuilder;
-        IWebConnection fakeConnection;
+        IWebConnection connection;
         IWebDataService service;
+
+        IRepository repository;
+
+        string key;
 
         [TestInitialize]
         public void Setup()
         {
+            if (testMode == "Live")
+            {
+                repository = new MSSQLDatabase();
+                connection = new ComicVineWebConnection();
+            }
+            else
+            {
+                repository = new TestRepository();
+                connection = new TestWebConnection();
+            }
+
+            key = repository.GetWebServiceKey("WebServiceKey");
+
             converter = new ComicVineConverter();
-            urlBuilder = new ComicVineURLBuilder("[TestKey]");
-            fakeConnection = new TestWebConnection();
-            service = new WebDataService(fakeConnection, converter, urlBuilder);
+            urlBuilder = new ComicVineURLBuilder(key);
+            service = new WebDataService(connection, converter, urlBuilder);
         }
 
         string TestXMLComicVinePublisherUnFilteredFileName = @"../../../Documentation/PublisherUnfiltered.xml";
         string TestXMLComicVineVolumeUnFilteredFileName = @"../../../Documentation/volume.xml";
         string TestXMLComicVineIssueUnFilteredFileName = @"../../../Documentation/issue.xml";
-        string key = "12345678";
 
         [TestMethod]
         public void CanConvertComicVineXmlToComicVinePublisher()

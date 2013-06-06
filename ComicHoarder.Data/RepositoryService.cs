@@ -130,5 +130,10 @@ namespace ComicHoarder.Repository
         {
             return UpdateIssueToCollected(id);
         }
+
+        public string GetWebServiceKey(string name)
+        {
+            return GetWebServiceKey(name);
+        }
     }
 }
