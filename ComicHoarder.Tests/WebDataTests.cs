@@ -62,7 +62,7 @@ namespace ComicHoarder.Tests
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.PublisherById(31);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/publisher/4010-31/?api_key=12345678&format=xml");
+            Assert.IsTrue(query == "http://www.comicvine.com/api/publisher/4010-31/?api_key=12345678&field_list=volumes,deck,id,name&format=xml");
         }
 
         [TestMethod]
@@ -70,14 +70,14 @@ namespace ComicHoarder.Tests
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.VolumesFromPublisher(31);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/publisher/4010-31/?api_key=12345678&format=xml");
+            Assert.IsTrue(query == "http://www.comicvine.com/api/publisher/4010-31/?api_key=12345678&field_list=volumes,deck,id,name&format=xml");
         }
         [TestMethod]
         public void CanBuildVolumeByIdQuery()
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.VolumeById(1234);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/volume/4050-1234/?api_key=12345678&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year");
+            Assert.IsTrue(query == "http://www.comicvine.com/api/volume/4050-1234/?api_key=12345678&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,description");
         }
         [TestMethod]
         public void CanBuildIssuesFromVolumeQuery()

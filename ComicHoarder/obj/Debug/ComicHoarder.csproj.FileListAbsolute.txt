@@ -39,3 +39,18 @@ C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.cache
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.g.resources
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.Properties.Resources.resources
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe.config
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csprojResolveAssemblyReference.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\MainWindow.baml
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\MainWindow.g.cs
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\App.g.cs
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.g.resources
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.Properties.Resources.resources
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache

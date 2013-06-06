@@ -38,3 +38,17 @@ C:\GitHub\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Data.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.EComic.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.WebData.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Tests\obj\Debug\ComicHoarder.Tests.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Tests.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Tests.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Data.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.EComic.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.WebData.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\Ionic.Zip.Reduced.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.Data.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.EComic.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\bin\Debug\ComicHoarder.WebData.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\obj\Debug\ComicHoarder.Tests.csprojResolveAssemblyReference.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\obj\Debug\ComicHoarder.Tests.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Tests\obj\Debug\ComicHoarder.Tests.pdb

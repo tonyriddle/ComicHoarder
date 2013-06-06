@@ -1,0 +1,9 @@
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\bin\Debug\ComicHoarder.LiveTests.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\bin\Debug\ComicHoarder.LiveTests.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\obj\Debug\ComicHoarder.LiveTests.csprojResolveAssemblyReference.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\obj\Debug\ComicHoarder.LiveTests.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\obj\Debug\ComicHoarder.LiveTests.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\bin\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\bin\Debug\ComicHoarder.WebData.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\bin\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.LiveTests\bin\Debug\ComicHoarder.WebData.pdb

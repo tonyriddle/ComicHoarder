@@ -23,12 +23,12 @@ namespace ComicHoarder
 
         public string PublisherById(int id)
         {
-            return "http://www.comicvine.com/api/publisher/4010-" + id + "/?api_key=" + key + "&format=xml";
+            return "http://www.comicvine.com/api/publisher/4010-" + id + "/?api_key=" + key + "&field_list=volumes,deck,id,name&format=xml";
         }
 
         public string VolumesFromPublisher(int id)
         {
-            return "http://www.comicvine.com/api/publisher/4010-" + id + "/?api_key=" + key + "&format=xml";
+            return "http://www.comicvine.com/api/publisher/4010-" + id + "/?api_key=" + key + "&field_list=volumes,deck,id,name&format=xml";
         }
 
         public string NewVolumes()
@@ -38,7 +38,7 @@ namespace ComicHoarder
 
         public string VolumeById(int id)
         {
-            return "http://www.comicvine.com/api/volume/4050-" + id + "/?api_key=" + key + "&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year";
+            return "http://www.comicvine.com/api/volume/4050-" + id + "/?api_key=" + key + "&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,description";
         }
 
         public string IssuesFromVolume(int id)
