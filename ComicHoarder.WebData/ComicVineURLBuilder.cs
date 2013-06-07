@@ -43,7 +43,7 @@ namespace ComicHoarder
 
         public string IssuesFromVolume(int id)
         {
-            return "http://www.comicvine.com/api/volume/4050-" + id + "/?api_key=" + key + "&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,issues";
+            return "http://www.comicvine.com/api/volume/4050-" + id + "/?api_key=" + key + "&format=xml&field_list=id,volume,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,issues";
         }
 
         public string NewIssues()
@@ -53,7 +53,7 @@ namespace ComicHoarder
 
         public string IssueById(int id)
         {
-            return "http://www.comicvine.com/api/issue/4000-" + id.ToString() + "/?api_key=" + key + "&format=xml&field_list=id,volumes,name,issue_number,cover_date";
+            return "http://www.comicvine.com/api/issue/4000-" + id.ToString() + "/?api_key=" + key + "&format=xml&field_list=id,cover_date,volume,name,issue_number";
         }
 
         public string SearchVolumes(string name)

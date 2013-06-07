@@ -19,6 +19,7 @@ namespace ComicHoarder
             //TODO appconfig
             //AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicHoarder\");
             //constring = ConfigurationManager.ConnectionStrings["ComicHoarderConnectionString"].ToString();
+            constring = @"Server=localhost\SQLEXPRESS;Database=ComicHoarder;User Id=sa;Password=bikes;";
         }
 
         public MSSQLDatabase(string connectionstring)

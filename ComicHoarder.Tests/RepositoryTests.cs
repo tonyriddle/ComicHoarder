@@ -11,7 +11,6 @@ namespace ComicHoarder.Tests
     {
         string testMode = "Test";
         //string testMode = "Live";
-        //TODO Before making this work live, create dummy records in db to manipulate and sync with testRepository
 
         IRepository repository;
         RepositoryService service;
@@ -88,7 +87,8 @@ namespace ComicHoarder.Tests
             Issue issue = new Issue
             {
                 id = -7,
-                name = "It's a Wonderful World"
+                name = "It's a Wonderful World",
+                volumeId = -1
             };
             repository.Save(issue);
             Issue savedIssue = repository.GetIssue(-7);
@@ -102,7 +102,9 @@ namespace ComicHoarder.Tests
             Volume volume = new Volume
             {
                 id = -7,
-                name = "Wild West Tales"
+                name = "Wild West Tales",
+                publisherId = -1,
+                description = "Wild Wild West"
             };
             repository.Save(volume);
             Volume savedVolume = repository.GetVolume(-7);
@@ -116,7 +118,8 @@ namespace ComicHoarder.Tests
             Publisher publisher = new Publisher
             {
                 id = -7,
-                name = "Cheetum Comics"
+                name = "Cheetum Comics",
+                description = "Steelers"
             };
             repository.Save(publisher);
             Publisher savedPublisher = repository.GetPublisher(-7);
@@ -138,17 +141,20 @@ namespace ComicHoarder.Tests
                 new Publisher 
                 {
                     id = -1,
-                    name = "Marvel"
+                    name = "Marvel",
+                    description = "The finest"
                 },
                 new Publisher 
                 {
                     id = -2,
-                    name = "DC"
+                    name = "DC",
+                    description = "Batman and such"
                 },
                 new Publisher 
                 {
                     id = -3,
-                    name = "Charlton"
+                    name = "Charlton",
+                    description = "old timey"
                 }
             };
 
@@ -158,19 +164,22 @@ namespace ComicHoarder.Tests
                 {
                     id = -1,
                     name = "Blue Beetle",
-                    publisherId = -1
+                    publisherId = -1,
+                    description = "something"
                 },
                 new Volume
                 {
                     id = -2,
                     name = "Captain Marvel",
-                    publisherId = -1
+                    publisherId = -1,
+                    description = "something else"
                 },
                 new Volume
                 {
                     id = -3,
                     name = "The Phantom",
-                    publisherId = -1
+                    publisherId = -1,
+                    description = "purple suit"
                 }
             };
 
@@ -227,12 +236,15 @@ namespace ComicHoarder.Tests
 
         private void TearDownDB()
         {
+            repository.DeletePublisher(-1);
             repository.DeletePublisher(-2);
             repository.DeletePublisher(-3);
             repository.DeletePublisher(-7);
+            repository.DeleteVolume(-1);
             repository.DeleteVolume(-2);
             repository.DeleteVolume(-3);
             repository.DeleteVolume(-7);
+            repository.DeleteIssue(-1);
             repository.DeleteIssue(-2);
             repository.DeleteIssue(-3);
             repository.DeleteIssue(-4);

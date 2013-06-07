@@ -44,7 +44,7 @@ namespace ComicHoarder.Tests
             service = new WebDataService(connection, converter, urlBuilder);
         }
 
-        string TestXMLComicVinePublisherUnFilteredFileName = @"../../../Documentation/PublisherUnfiltered.xml";
+        string TestXMLComicVinePublisherFilteredFileName = @"../../../Documentation/Publisherfiltered.xml";
         string TestXMLComicVineVolumeUnFilteredFileName = @"../../../Documentation/volume.xml";
         string TestXMLComicVineIssueUnFilteredFileName = @"../../../Documentation/issue.xml";
 
@@ -52,7 +52,7 @@ namespace ComicHoarder.Tests
         public void CanConvertComicVineXmlToComicVinePublisher()
         {
             string result = "";
-            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherUnFilteredFileName))
+            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherFilteredFileName))
             {
                 result = sr.ReadToEnd();
             }
@@ -65,7 +65,7 @@ namespace ComicHoarder.Tests
         public void CanConvertComicVineXmlToPublisher()
         {
             string result = "";
-            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherUnFilteredFileName))
+            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherFilteredFileName))
             {
                 result = sr.ReadToEnd();
             }
@@ -79,14 +79,14 @@ namespace ComicHoarder.Tests
         public void CanConvertComicVineXmlToListofVolumes()
         {
             string result = "";
-            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherUnFilteredFileName))
+            using (StreamReader sr = new StreamReader(TestXMLComicVinePublisherFilteredFileName))
             {
                 result = sr.ReadToEnd();
             }
             ComicVineConverter converter = new ComicVineConverter();
             List<Volume> volumes = converter.ConvertToVolumes(result);
             Assert.IsTrue(volumes[0].id == 1533);
-            Assert.IsTrue(volumes.Count == 335);
+            Assert.IsTrue(volumes.Count == 336);
         }
 
         [TestMethod]
@@ -94,7 +94,7 @@ namespace ComicHoarder.Tests
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.PublisherById(31);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/publisher/4010-31/?api_key=12345678&field_list=volumes,deck,id,name&format=xml");
+            Assert.IsTrue(query.Contains("http://www.comicvine.com/api/publisher/4010-31/?api_key=") && query.Contains("&field_list=volumes,deck,id,name&format=xml"));
         }
 
         [TestMethod]
@@ -102,21 +102,21 @@ namespace ComicHoarder.Tests
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.VolumesFromPublisher(31);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/publisher/4010-31/?api_key=12345678&field_list=volumes,deck,id,name&format=xml");
+            Assert.IsTrue(query.Contains("http://www.comicvine.com/api/publisher/4010-31/?api_key=") && query.Contains("&field_list=volumes,deck,id,name&format=xml"));
         }
         [TestMethod]
         public void CanBuildVolumeByIdQuery()
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.VolumeById(1234);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/volume/4050-1234/?api_key=12345678&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,description");
+            Assert.IsTrue(query.Contains("http://www.comicvine.com/api/volume/4050-1234/?api_key=") && query.Contains("&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,description"));
         }
         [TestMethod]
         public void CanBuildIssuesFromVolumeQuery()
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.IssuesFromVolume(1234);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/volume/4050-1234/?api_key=12345678&format=xml&field_list=id,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,issues");
+            Assert.IsTrue(query.Contains("http://www.comicvine.com/api/volume/4050-1234/?api_key=") && query.Contains("&format=xml&field_list=id,volume,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,issues"));
         }
 
         [TestMethod]
@@ -124,22 +124,22 @@ namespace ComicHoarder.Tests
         {
             ComicVineURLBuilder URLBuilder = new ComicVineURLBuilder(key);
             string query = URLBuilder.IssueById(1234);
-            Assert.IsTrue(query == "http://www.comicvine.com/api/issue/4000-1234/?api_key=12345678&format=xml&field_list=id,volumes,name,issue_number,cover_date");
+            Assert.IsTrue(query.Contains("http://www.comicvine.com/api/issue/4000-1234/?api_key=") && query.Contains("&format=xml&field_list=id,cover_date,volume,name,issue_number"));
         }
 
         [TestMethod]
         public void CanGetPublisherFromWebDataService()
         {
-            Publisher publisher = service.GetPublisher(31);
-            Assert.IsTrue(publisher.id == 125); //remember, we are using the dummy publisher xml file from above
+            Publisher publisher = service.GetPublisher(125);
+            Assert.IsTrue(publisher.id == 125); 
         }
 
         [TestMethod]
         public void CanGetVolumesFromPublisherFromWebDataService()
         {
-            List<Volume> volumes = service.GetVolumesFromPublisher(31);
+            List<Volume> volumes = service.GetVolumesFromPublisher(125);
             Assert.IsTrue(volumes[0].id == 1533);
-            Assert.IsTrue(volumes.Count == 335);
+            Assert.IsTrue(volumes.Count == 336);
         }
 
         [TestMethod]
@@ -174,8 +174,8 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetVolumeFromWebDataService()
         {
-            Volume volume = service.GetVolume(1234);
-            Assert.IsTrue(volume.id == 2189); //remember, we are using the dummy publisher xml file from above
+            Volume volume = service.GetVolume(2189);
+            Assert.IsTrue(volume.id == 2189); 
         }
 
         [TestMethod]
@@ -188,20 +188,20 @@ namespace ComicHoarder.Tests
             }
             ComicVineConverter converter = new ComicVineConverter();
             List<Issue> issues = converter.ConvertToIssues(result);
-            Assert.IsTrue(issues[0].id == 337485);
-            Assert.IsTrue(issues.Count == 39);
-            Assert.IsTrue(issues[0].name == "Spider Who?");
-            Assert.IsTrue(issues[0].issueNumber == 39.0);
+            Assert.IsTrue(issues[0].id == 6837);
+            Assert.IsTrue(issues.Count == 33);
+            Assert.IsTrue(issues[0].name == "The Sinister Six!");
+            Assert.IsTrue(issues[0].issueNumber == 1.0);
         }
 
         [TestMethod]
         public void CanGetIssuesFromVolumeFromWebDataService()
         {
-            List<Issue> issues = service.GetIssuesFromVolume(1234);
-            Assert.IsTrue(issues[0].id == 337485);
-            Assert.IsTrue(issues.Count == 39);
-            Assert.IsTrue(issues[0].name == "Spider Who?");
-            Assert.IsTrue(issues[0].issueNumber == 39.0);
+            List<Issue> issues = service.GetIssuesFromVolume(2189);
+            Assert.IsTrue(issues[0].id == 6837);
+            Assert.IsTrue(issues.Count == 33);
+            Assert.IsTrue(issues[0].name == "The Sinister Six!");
+            Assert.IsTrue(issues[0].issueNumber == 1.0);
         }
 
         [TestMethod]
@@ -228,9 +228,9 @@ namespace ComicHoarder.Tests
             ComicVineConverter converter = new ComicVineConverter();
             Issue issue = converter.ConvertToIssue(result);
             Assert.IsTrue(issue.id == 187507);
-            Assert.IsTrue(issue.name == " ");
-            Assert.IsTrue(issue.publishYear == 0);
-            Assert.IsTrue(issue.publishMonth == 0);
+            Assert.IsTrue(issue.name == "");
+            Assert.IsTrue(issue.publishYear == 2007);
+            Assert.IsTrue(issue.publishMonth == 6);
             Assert.IsTrue(issue.issueNumber == 4.00);
 
         }
@@ -238,11 +238,11 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanGetIssueFromWebDataService()
         {
-            Issue issue = service.GetIssue(1234);
+            Issue issue = service.GetIssue(187507);
             Assert.IsTrue(issue.id == 187507);
-            Assert.IsTrue(issue.name == " ");
-            Assert.IsTrue(issue.publishYear == 0);
-            Assert.IsTrue(issue.publishMonth == 0);
+            Assert.IsTrue(issue.name == "");
+            Assert.IsTrue(issue.publishYear == 2007);
+            Assert.IsTrue(issue.publishMonth == 6);
             Assert.IsTrue(issue.issueNumber == 4.00);
         }
 
@@ -250,7 +250,7 @@ namespace ComicHoarder.Tests
         public void CanConvertSearchPublisherToPublisher()
         {
             List<Publisher> publishers = service.SearchPublishers("Marvel");
-            Assert.IsTrue(publishers[0].id == 31); //remember, we are using the dummy publisher xml file from above
+            Assert.IsTrue(publishers[0].id == 31); 
         }
 
         [TestMethod]

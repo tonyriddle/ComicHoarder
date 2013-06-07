@@ -1,135 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <response>
   <error><![CDATA[OK]]></error>
   <limit>1</limit>
+  <offset>0</offset>
   <number_of_page_results>1</number_of_page_results>
   <number_of_total_results>1</number_of_total_results>
-  <offset>0</offset>
+  <status_code>1</status_code>
   <results>
-    <aliases><![CDATA[]]></aliases>
-    <api_detail_url><![CDATA[http://api.comicvine.com/issue/187507/]]></api_detail_url>
-    <character_credits>
-      <character>
-        <api_detail_url><![CDATA[http://api.comicvine.com/character/6911/]]></api_detail_url>
-        <id>6911</id>
-        <name><![CDATA[Hyperion]]></name>
-        <site_detail_url><![CDATA[http://www.comicvine.com/hyperion/29-6911/]]></site_detail_url>
-      </character>
-      <character>
-        <api_detail_url><![CDATA[http://api.comicvine.com/character/4832/]]></api_detail_url>
-        <id>4832</id>
-        <name><![CDATA[Nighthawk]]></name>
-        <site_detail_url><![CDATA[http://www.comicvine.com/nighthawk/29-4832/]]></site_detail_url>
-      </character>
-    </character_credits>
-    <characters_died_in></characters_died_in>
-    <concept_credits></concept_credits>
-    <date_added>2009-12-15 06:39:49.681384</date_added>
-    <date_last_updated>2009-12-15 06:48:10.471508</date_last_updated>
-    <deck><![CDATA[]]></deck>
-    <description><![CDATA[<br /><em>It all comes down to this: The final confrontation between Hyperion and Nighthawk! Will their conflict destroy an entire COUNTRY -- or save it? All of the mysteries are answered here and Marc (Wolverine, Blade) Guggenheim and Paul (Shang-Chi) Gulacy have them!!</em> &nbsp; &nbsp;]]></description>
-    <disbanded_teams></disbanded_teams>
-    <first_appearance_characters></first_appearance_characters>
-    <first_appearance_concepts></first_appearance_concepts>
-    <first_appearance_locations></first_appearance_locations>
-    <first_appearance_objects></first_appearance_objects>
-    <first_appearance_storyarcs></first_appearance_storyarcs>
-    <first_appearance_teams></first_appearance_teams>
-    <has_staff_review>False</has_staff_review>
+    <cover_date><![CDATA[2007-06-01]]></cover_date>
     <id>187507</id>
-    <image>
-      <icon_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_icon.jpg]]></icon_url>
-      <medium_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_small.jpg]]></medium_url>
-      <screen_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_screen.jpg]]></screen_url>
-      <small_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_small.jpg]]></small_url>
-      <super_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_super.jpg]]></super_url>
-      <thumb_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_thumb.jpg]]></thumb_url>
-      <tiny_url><![CDATA[http://media.comicvine.com/uploads/5/50436/1060796-prv3843_pg1_tiny.jpg]]></tiny_url>
-    </image>
-    <issue_number>4.00</issue_number>
-    <location_credits></location_credits>
-    <name><![CDATA[ ]]></name>
-    <object_credits></object_credits>
-    <person_credits>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/42339/]]></api_detail_url>
-        <id>42339</id>
-        <name><![CDATA[Marc Guggenheim]]></name>
-        <roles>
-          <role><![CDATA[writer]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/4066/]]></api_detail_url>
-        <id>4066</id>
-        <name><![CDATA[Paul Gulacy]]></name>
-        <roles>
-          <role><![CDATA[penciler]]></role>
-          <role><![CDATA[inker]]></role>
-          <role><![CDATA[cover]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/41553/]]></api_detail_url>
-        <id>41553</id>
-        <name><![CDATA[Joe Caramagna]]></name>
-        <roles>
-          <role><![CDATA[letterer]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/7673/]]></api_detail_url>
-        <id>7673</id>
-        <name><![CDATA[John Rauch]]></name>
-        <roles>
-          <role><![CDATA[colorist]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/42260/]]></api_detail_url>
-        <id>42260</id>
-        <name><![CDATA[Alejandro Arbona]]></name>
-        <roles>
-          <role><![CDATA[editor]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/41798/]]></api_detail_url>
-        <id>41798</id>
-        <name><![CDATA[Warren Simons]]></name>
-        <roles>
-          <role><![CDATA[editor]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/1537/]]></api_detail_url>
-        <id>1537</id>
-        <name><![CDATA[Joe Quesada]]></name>
-        <roles>
-          <role><![CDATA[editor]]></role>
-        </roles>
-      </person>
-      <person>
-        <api_detail_url><![CDATA[http://api.comicvine.com/person/41596/]]></api_detail_url>
-        <id>41596</id>
-        <name><![CDATA[Dan Buckley]]></name>
-        <roles>
-          <role><![CDATA[other]]></role>
-        </roles>
-      </person>
-    </person_credits>
-    <publish_day></publish_day>
-    <publish_month>6</publish_month>
-    <publish_year>2007</publish_year>
-    <site_detail_url><![CDATA[http://www.comicvine.com/squadron-supreme-hyperion-vs-nighthawk-/37-187507/]]></site_detail_url>
-    <story_arc_credits></story_arc_credits>
-    <team_credits></team_credits>
-    <teams_disbanded_in></teams_disbanded_in>
+    <issue_number>4</issue_number>
+    <name/>
     <volume>
-      <api_detail_url><![CDATA[http://api.comicvine.com/volume/30439/]]></api_detail_url>
+      <api_detail_url><![CDATA[http://www.comicvine.com/api/volume/4050-30439/]]></api_detail_url>
       <id>30439</id>
       <name><![CDATA[Squadron Supreme: Hyperion vs. Nighthawk]]></name>
+      <site_detail_url><![CDATA[http://www.comicvine.com/squadron-supreme-hyperion-vs-nighthawk/4050-30439/]]></site_detail_url>
     </volume>
   </results>
-  <status_code>1</status_code>
+  <version>1.0</version>
 </response>
