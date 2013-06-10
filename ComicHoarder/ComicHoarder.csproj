@@ -53,6 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PublisherSelector.xaml.cs">
+      <DependentUpon>PublisherSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\PublisherSelectorViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,6 +69,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PublisherSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -95,13 +103,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ComicHoarder.Common\ComicHoarder.Common.csproj">
       <Project>{47445416-9933-44f0-b74d-4ab9f7d67e29}</Project>
       <Name>ComicHoarder.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComicHoarder.Data\ComicHoarder.Repository.csproj">
+      <Project>{0938c34c-65b8-421c-9611-f1c4ae13cf87}</Project>
+      <Name>ComicHoarder.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComicHoarder.EComic\ComicHoarder.EComic.csproj">
+      <Project>{004f1b20-7aea-4f7a-994a-71350fec769c}</Project>
+      <Name>ComicHoarder.EComic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ComicHoarder.WebData\ComicHoarder.WebData.csproj">
+      <Project>{efca2f77-beaa-48aa-80ca-7b1ad732e2d8}</Project>
+      <Name>ComicHoarder.WebData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
