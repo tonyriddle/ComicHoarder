@@ -24,12 +24,6 @@ namespace ComicHoarder
     {
         public PublisherSelector()
         {
-            IRepository repository = new MSSQLDatabase();
-            ComicHoarder.ViewModels.PublisherSelectorViewModel Model = new ViewModels.PublisherSelectorViewModel();
-            foreach (Publisher publisher in repository.GetPublishers())
-            {
-                Model.Publishers.Add(publisher);
-            }
             InitializeComponent();
         }
     }

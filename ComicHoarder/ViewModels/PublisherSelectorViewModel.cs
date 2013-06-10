@@ -10,17 +10,20 @@ using ComicHoarder.Common;
 
 namespace ComicHoarder.ViewModels
 {
-    public class PublisherSelectorViewModel : INotifyPropertyChanged
+    public class PublisherSelectorViewModel : ViewModelBase
     {
+        private int selectedPublisher = 0;
         public ObservableCollection<Publisher> Publishers { get; set; }
-        public ObservableCollection<Publisher> SelectedPublishers { get; set; }
+        public int SelectedPublisher { get { return selectedPublisher; } set { selectedPublisher = value;  NotifyPropertyChanged("Publisher", value); } }
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public PublisherSelectorViewModel()
         {
             Publishers = new ObservableCollection<Publisher>();
-            SelectedPublishers = new ObservableCollection<Publisher>();
+            //TODO Replace with db call
+            Publishers.Add(new Publisher { name = "Marvel", id = 31 });
+            Publishers.Add(new Publisher { name = "Charlton", id = 125 });
+            selectedPublisher = Publishers[0].id;
         }
     }
 }

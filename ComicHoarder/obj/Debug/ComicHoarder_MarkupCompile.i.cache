@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\
 ComicHoarder
 none
 false
 DEBUG;TRACE
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\App.xaml
-2-1692553294
+C:\GitHub\ComicHoarder\ComicHoarder\App.xaml
+37502675
 
-11269022476
-16187519770
-MainWindow.xaml;PublisherSelector.xaml;
+14946523651
+16-1258618439
+MainWindow.xaml;PublisherSelector.xaml;VolumeDataGrid.xaml;
 
 True
 

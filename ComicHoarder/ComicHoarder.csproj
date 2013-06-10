@@ -57,6 +57,11 @@
       <DependentUpon>PublisherSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\PublisherSelectorViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\VolumeViewModel.cs" />
+    <Compile Include="VolumeDataGrid.xaml.cs">
+      <DependentUpon>VolumeDataGrid.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -70,6 +75,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PublisherSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VolumeDataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -65,3 +65,16 @@ D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Data.dll
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.EComic.dll
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.WebData.dll
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\Ionic.Zip.Reduced.dll
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Data.pdb
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.EComic.pdb
+C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.WebData.pdb
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\PublisherSelector.baml
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\PublisherSelector.g.cs
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.lref
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\VolumeDataGrid.baml
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\VolumeDataGrid.g.cs

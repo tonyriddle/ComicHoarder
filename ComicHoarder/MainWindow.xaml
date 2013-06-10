@@ -4,6 +4,9 @@
         xmlns:local="clr-namespace:ComicHoarder"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
+        <StackPanel>
         <local:PublisherSelector />
+        <local:VolumeDataGrid />
+        </StackPanel>
     </Grid>
 </Window>
