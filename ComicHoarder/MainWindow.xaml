@@ -1,12 +1,67 @@
 ﻿<Window x:Class="ComicHoarder.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:ComicHoarder"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <StackPanel>
-        <local:PublisherSelector />
-        <local:VolumeDataGrid />
-        </StackPanel>
+        xmlns:local="clr-namespace:ComicHoarder.ViewModels"
+        Title="MainWindow" Height="750" Width="1200">
+    <Window.DataContext>
+        <local:ComicHoarderViewModel />
+    </Window.DataContext>
+    <Grid Background="DarkGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Name="PublisherGrid" Grid.Row="0" Grid.Column="0" Background="Black" Margin="1,1,1,1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30px" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <DataGrid x:Name="dgPublishers" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False" ItemsSource="{Binding Publishers, Mode=TwoWay}" SelectedIndex="{Binding SelectedPublisher, Mode=TwoWay}" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100px" />
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Publishers" Grid.Column="0" Foreground="LightGray" />
+                <Button x:Name="btnAddPublisher" Content="Add" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddPublisherCommand}" />
+            </Grid>
+        </Grid>
+        <Grid Name="VolumeGrid" Grid.Row="0" Grid.Column="1" Background="Black" Margin="1,1,1,1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30px" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <DataGrid x:Name="dgVolume" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False"  ItemsSource="{Binding Volumes, Mode=TwoWay}" SelectedIndex="{Binding SelectedVolume, Mode=TwoWay}" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100px" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Volumes" Grid.Column="0" Foreground="LightGray" />
+                <Button x:Name="btnFindVolumes" Content="Find" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding FindVolumesCommand}"/>
+                <Button x:Name="btnAddVolume" Content="Add" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddVolumesCommand}" />
+            </Grid>
+        </Grid>
+        <Grid Name="IssueGrid">
+
+        </Grid>
+        <Grid Name="MissingIssueGrid">
+
+        </Grid>
+        <Grid Name="MessageGrid">
+
+        </Grid>
     </Grid>
 </Window>
