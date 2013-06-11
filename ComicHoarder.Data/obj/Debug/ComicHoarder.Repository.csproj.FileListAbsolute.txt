@@ -19,13 +19,6 @@ C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Enti
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Repository.csprojResolveAssemblyReference.cache
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.dll
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Data.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Data.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Entities.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Entities.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Repository.csprojResolveAssemblyReference.cache
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Data.dll
 C:\GitHub\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Data.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Entities.dll
@@ -33,3 +26,10 @@ C:\GitHub\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Entities.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Repository.csprojResolveAssemblyReference.cache
 C:\GitHub\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.dll
 C:\GitHub\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Data.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Data.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\bin\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Repository.csprojResolveAssemblyReference.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Data\obj\Debug\ComicHoarder.Data.pdb

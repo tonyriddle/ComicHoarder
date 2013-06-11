@@ -24,32 +24,6 @@ C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCom
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.g.resources
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.Properties.Resources.resources
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe.config
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Data.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.EComic.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Entities.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.WebData.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\Ionic.Zip.Reduced.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Entities.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Data.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.EComic.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.WebData.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csprojResolveAssemblyReference.cache
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\PublisherSelector.baml
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\MainWindow.g.cs
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\PublisherSelector.g.cs
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\App.g.cs
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.cache
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.lref
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\MainWindow.baml
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.g.resources
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.Properties.Resources.resources
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb
 C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe.config
 C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe
 C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.pdb
@@ -74,3 +48,27 @@ C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResour
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe.config
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.exe
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Data.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.EComic.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.WebData.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\Ionic.Zip.Reduced.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.Data.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.EComic.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\ComicHoarder.WebData.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csprojResolveAssemblyReference.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\MainWindow.g.cs
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\App.g.cs
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder_MarkupCompile.lref
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\MainWindow.baml
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.g.resources
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.Properties.Resources.resources
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb

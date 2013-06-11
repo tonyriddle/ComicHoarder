@@ -11,12 +11,11 @@ namespace ComicHoarder.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChanged(string publisher, int id)
+        public void NotifyPropertyChanged(string name, int id)
         {
             if (PropertyChanged != null)
             {
-                string selectedPublisher = publisher;
-                PropertyChanged(this, new PropertyChangedEventArgs(publisher));
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
     }

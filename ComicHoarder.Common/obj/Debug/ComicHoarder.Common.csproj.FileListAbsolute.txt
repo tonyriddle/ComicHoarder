@@ -1,9 +1,8 @@
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.pdb
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Common.csprojResolveAssemblyReference.cache
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.dll
-D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.dll
 C:\GitHub\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.dll
 C:\GitHub\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.pdb

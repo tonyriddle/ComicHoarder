@@ -19,8 +19,13 @@ namespace ComicHoarder.ViewModels
         { 
             get { return selectedPublisher; } 
             set { selectedPublisher = Publishers[value].id;
-                Task t = Task.Factory.StartNew(() => UpdateVolumes(Publishers[value].id));
-                  NotifyPropertyChanged("Publisher", value); } 
+            Task<ObservableCollection<Volume>> t = Task<ObservableCollection<Volume>>.Factory.StartNew(() => UpdateVolumesAsync(Publishers[value].id));
+            Volumes.Clear();
+            foreach (Volume volume in t.Result)
+            {
+                Volumes.Add(volume);
+            }
+            NotifyPropertyChanged("Publisher", value); } 
         }
 
         public int selectedVolume = 0;
@@ -29,7 +34,7 @@ namespace ComicHoarder.ViewModels
         {
             get { return selectedVolume; }
             set {
-                selectedVolume = Volumes[value].id;
+                selectedVolume = value == -1 ? 0 : Volumes[value].id;
                 NotifyPropertyChanged("Volume", value); }
         }
 
@@ -51,7 +56,7 @@ namespace ComicHoarder.ViewModels
             selectedVolume = Volumes[0].id;
         }
 
-        public void UpdateVolumes(int publisherId)
+        public ObservableCollection<Volume> UpdateVolumesAsync(int publisherId)
         {
             ObservableCollection<Volume> newVolumes = new ObservableCollection<Volume>();
             if (publisherId == 31)
@@ -64,8 +69,22 @@ namespace ComicHoarder.ViewModels
                 newVolumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
                 newVolumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
             }
+            return newVolumes;
+        }
 
-
+        public void UpdateVolumes(int publisherId)
+        {
+            Volumes.Clear();
+            if (publisherId == 31)
+            {
+                Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
+                Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
+            }
+            else
+            {
+                Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
+                Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
+            }
         }
 
         public ICommand AddPublisherCommand

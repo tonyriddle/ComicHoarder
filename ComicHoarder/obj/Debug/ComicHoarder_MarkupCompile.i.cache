@@ -9,21 +9,12 @@ ComicHoarder
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\App.xaml
-37502675
-
-14-944439382
-16187519770
-MainWindow.xaml;PublisherSelector.xaml;VolumeDataGrid.xaml;
-=======
-C:\GitHub\ComicHoarder\ComicHoarder\App.xaml
 11151548125
 
-132074146076
-16-1258618439
+13183183043
+16187519770
 MainWindow.xaml;
->>>>>>> 82d41b3b6a986f1d747989663501340ebd55f920
 
-True
+False
 
