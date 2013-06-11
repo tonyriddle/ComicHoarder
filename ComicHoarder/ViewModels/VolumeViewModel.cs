@@ -21,5 +21,7 @@ namespace ComicHoarder.ViewModels
             selectedVolume = Volumes[0].id;
 
         }
+
+
     }
 }
