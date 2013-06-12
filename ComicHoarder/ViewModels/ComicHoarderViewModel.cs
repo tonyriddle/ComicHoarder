@@ -18,14 +18,15 @@ namespace ComicHoarder.ViewModels
         public int SelectedPublisher 
         { 
             get { return selectedPublisher; } 
-            set { selectedPublisher = Publishers[value].id;
-            Task<ObservableCollection<Volume>> t = Task<ObservableCollection<Volume>>.Factory.StartNew(() => UpdateVolumesAsync(Publishers[value].id));
-            Volumes.Clear();
-            foreach (Volume volume in t.Result)
-            {
-                Volumes.Add(volume);
-            }
-            NotifyPropertyChanged("Publisher", value); } 
+            set 
+            { 
+                selectedPublisher = Publishers[value].id;
+                Task<ObservableCollection<Volume>> t = Task<ObservableCollection<Volume>>.Factory.StartNew(() => UpdateVolumesAsync(Publishers[value].id));
+                Volumes.Clear();
+                Volumes = t.Result;
+                NotifyPropertyChanged("Publisher", value);
+                NotifyPropertyChanged("Volumes", value);
+            } 
         }
 
         public int selectedVolume = 0;
@@ -33,11 +34,43 @@ namespace ComicHoarder.ViewModels
         public int SelectedVolume
         {
             get { return selectedVolume; }
-            set {
+            set 
+            {
                 selectedVolume = value == -1 ? 0 : Volumes[value].id;
-                NotifyPropertyChanged("Volume", value); }
+                if (selectedVolume != 0)
+                {
+                    Task<ObservableCollection<Issue>> t = Task<ObservableCollection<Issue>>.Factory.StartNew(() => UpdateIssuesAsync(Volumes[value].id));
+                    Issues.Clear();
+                    Issues = t.Result;
+                    NotifyPropertyChanged("Issues", value);
+                }
+                NotifyPropertyChanged("Volumes", value);
+            }
         }
 
+        public int selectedIssue = 0;
+        public ObservableCollection<Issue> Issues { get; set; }
+        public int SelectedIssue
+        {
+            get { return selectedIssue; }
+            set
+            {
+                selectedIssue = value == -1 ? 0 : Issues[value].id;
+                NotifyPropertyChanged("Issues", value);
+            }
+        }
+
+        public int selectedMissingIssue = 0;
+        public ObservableCollection<MissingIssue> MissingIssues { get; set; }
+        public int SelectedMissingIssue
+        {
+            get { return selectedMissingIssue; }
+            set
+            {
+                selectedMissingIssue = value == -1 ? 0 : MissingIssues[value].id;
+                NotifyPropertyChanged("MissingIssues", value);
+            }
+        }
 
 
         public ComicHoarderViewModel()
@@ -50,10 +83,24 @@ namespace ComicHoarder.ViewModels
             Volumes = new ObservableCollection<Volume>();
             //TODO Replace with db call
             Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
-            Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
+            Volumes.Add(new Volume { name = "Spiderman v2", id = 1, publisherId = 31 });
             Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
-            Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
+            Volumes.Add(new Volume { name = "Blue Beetle v2", id = 3, publisherId = 125 });
             selectedVolume = Volumes[0].id;
+            //TODO Replace with db call
+            Issues = new ObservableCollection<Issue>();
+            Issues.Add(new Issue { id = 1, volumeId = 1, name = "Spider-Man 1" });
+            Issues.Add(new Issue { id = 2, volumeId = 1, name = "Spider-Man 2" });
+            Issues.Add(new Issue { id = 3, volumeId = 2, name = "Spider-Man v2 1" });
+            Issues.Add(new Issue { id = 4, volumeId = 2, name = "Spider-Man v2 2" });
+            Issues.Add(new Issue { id = 5, volumeId = 3, name = "Blue Beetle 1" });
+            Issues.Add(new Issue { id = 6, volumeId = 3, name = "Blue Beetle 2" });
+            Issues.Add(new Issue { id = 7, volumeId = 4, name = "Blue Beetle v2 1" });
+            Issues.Add(new Issue { id = 8, volumeId = 4, name = "Blue Beetle v2 2" });
+
+            //TODO Replace with db call
+            MissingIssues = new ObservableCollection<MissingIssue>();
+            MissingIssues.Add(new MissingIssue { id = 1, name = "Wolverine 1", volume_id = 5 });
         }
 
         public ObservableCollection<Volume> UpdateVolumesAsync(int publisherId)
@@ -72,19 +119,30 @@ namespace ComicHoarder.ViewModels
             return newVolumes;
         }
 
-        public void UpdateVolumes(int publisherId)
+        public ObservableCollection<Issue> UpdateIssuesAsync(int volumeId)
         {
-            Volumes.Clear();
-            if (publisherId == 31)
+            ObservableCollection<Issue> newIssues = new ObservableCollection<Issue>();
+            if (volumeId == 1)
             {
-                Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
-                Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
+                newIssues.Add(new Issue { id = 1, volumeId = 1, name = "Spider-Man 1" });
+                newIssues.Add(new Issue { id = 2, volumeId = 1, name = "Spider-Man 2" });
             }
-            else
+            else if(volumeId == 2)
             {
-                Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
-                Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
+                newIssues.Add(new Issue { id = 3, volumeId = 2, name = "Spider-Man v2 1" });
+                newIssues.Add(new Issue { id = 4, volumeId = 2, name = "Spider-Man v2 2" });
             }
+            else if (volumeId == 3)
+            {
+                newIssues.Add(new Issue { id = 5, volumeId = 3, name = "Blue Beetle 1" });
+                newIssues.Add(new Issue { id = 6, volumeId = 3, name = "Blue Beetle 2" });
+            }
+            else if (volumeId == 4)
+            {
+                newIssues.Add(new Issue { id = 7, volumeId = 4, name = "Blue Beetle v2 1" });
+                newIssues.Add(new Issue { id = 8, volumeId = 4, name = "Blue Beetle v2 2" });
+            }
+            return newIssues;
         }
 
         public ICommand AddPublisherCommand

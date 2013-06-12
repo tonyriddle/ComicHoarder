@@ -22,7 +22,7 @@
                 <RowDefinition Height="30px" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <DataGrid x:Name="dgPublishers" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False" ItemsSource="{Binding Publishers, Mode=TwoWay}" SelectedIndex="{Binding SelectedPublisher, Mode=TwoWay}" />
+                <DataGrid x:Name="dgPublishers" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False" CanUserAddRows="False" ItemsSource="{Binding Publishers, Mode=TwoWay}" SelectedIndex="{Binding SelectedPublisher, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -40,7 +40,7 @@
                 <RowDefinition Height="30px" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <DataGrid x:Name="dgVolume" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False"  ItemsSource="{Binding Volumes, Mode=TwoWay}" SelectedIndex="{Binding SelectedVolume, Mode=TwoWay}" />
+                <DataGrid x:Name="dgVolume" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False" CanUserAddRows="False" ItemsSource="{Binding Volumes, Mode=TwoWay}" SelectedIndex="{Binding SelectedVolume, Mode=TwoWay}" />
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -54,10 +54,46 @@
                 <Button x:Name="btnAddVolume" Content="Add" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddVolumesCommand}" />
             </Grid>
         </Grid>
-        <Grid Name="IssueGrid">
-
+        <Grid Name="IssueGrid" Grid.Row="1" Grid.Column="0" Background="Black" Margin="1,1,1,1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30px" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <DataGrid x:Name="dgIssue" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False" CanUserAddRows="False" ItemsSource="{Binding Issues, Mode=TwoWay}" SelectedIndex="{Binding SelectedIssue, Mode=TwoWay}" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100px" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Issues" Grid.Column="0" Foreground="LightGray" />
+                <Button x:Name="btnFindIssues" Content="Find" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding FindIssuesCommand}"/>
+                <Button x:Name="btnAddIssues" Content="Add" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddIssuesCommand}" />
+            </Grid>
         </Grid>
-        <Grid Name="MissingIssueGrid">
+        <Grid Name="MissingIssueGrid" Grid.Row="1" Grid.Column="1" Background="Black" Margin="1,1,1,1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="30px" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <DataGrid x:Name="dgMissingIssues" HorizontalAlignment="stretch" Margin="2,2,2,0" VerticalAlignment="Stretch" AutoGenerateColumns="True" IsReadOnly="False" CanUserAddRows="False" ItemsSource="{Binding MissingIssues, Mode=TwoWay}" SelectedIndex="{Binding SelectedMissingIssues, Mode=TwoWay}" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100px" />
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="MissingIssues" Grid.Column="0" Foreground="LightGray" />
+                <Button x:Name="btnFindMissingIssues" Content="Find" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding FindMissingIssuesCommand}"/>
+                <Button x:Name="btnAddMissingIssues" Content="Add" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddMissingIssuesCommand}" />
+            </Grid>        </Grid>
+        <Grid Name="DashboardGrid">
 
         </Grid>
         <Grid Name="MessageGrid">
