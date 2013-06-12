@@ -27,11 +27,6 @@ namespace ComicHoarder.WebData
             this.urlBuilder = new ComicVineURLBuilder(key);
         }
 
-        public List<Publisher> GetAllPublishers()
-        {
-            throw new NotImplementedException();
-        }
-
         public Publisher GetPublisher(int publisherId)
         {
             string url = urlBuilder.PublisherById(publisherId);
@@ -46,11 +41,6 @@ namespace ComicHoarder.WebData
             return converter.ConvertToVolumes(result);
         }
 
-        public List<Volume> GetNewVolumes(int publisherId, List<int> existingVolumeIds)
-        {
-            throw new NotImplementedException();
-        }
-
         public Volume GetVolume(int volumeId)
         {
             string url = urlBuilder.VolumeById(volumeId);
@@ -63,11 +53,6 @@ namespace ComicHoarder.WebData
             string url = urlBuilder.IssuesFromVolume(volumeId);
             string result = connection.Query(url);
             return converter.ConvertToIssues(result);
-        }
-
-        public List<Issue> GetNewIssues(int volumeId, List<int> existingIssueIds)
-        {
-            throw new NotImplementedException();
         }
 
         public Issue GetIssue(int issueId)

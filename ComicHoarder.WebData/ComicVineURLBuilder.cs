@@ -16,11 +16,6 @@ namespace ComicHoarder
             key = inkey;
         }
 
-        public string AllPublishers()
-        {
-            throw new NotImplementedException();
-        }
-
         public string PublisherById(int id)
         {
             return "http://www.comicvine.com/api/publisher/4010-" + id + "/?api_key=" + key + "&field_list=volumes,deck,id,name&format=xml";
@@ -29,11 +24,6 @@ namespace ComicHoarder
         public string VolumesFromPublisher(int id)
         {
             return "http://www.comicvine.com/api/publisher/4010-" + id + "/?api_key=" + key + "&field_list=volumes,deck,id,name&format=xml";
-        }
-
-        public string NewVolumes()
-        {
-            throw new NotImplementedException();
         }
 
         public string VolumeById(int id)
@@ -46,11 +36,6 @@ namespace ComicHoarder
             return "http://www.comicvine.com/api/volume/4050-" + id + "/?api_key=" + key + "&format=xml&field_list=id,volume,publisher,name,deck,date_added,date_last_updated,concept_credits,count_of_issues,start_year,issues";
         }
 
-        public string NewIssues()
-        {
-            throw new NotImplementedException();
-        }
-
         public string IssueById(int id)
         {
             return "http://www.comicvine.com/api/issue/4000-" + id.ToString() + "/?api_key=" + key + "&format=xml&field_list=id,cover_date,volume,name,issue_number";
@@ -58,11 +43,13 @@ namespace ComicHoarder
 
         public string SearchVolumes(string name)
         {
+            //TODO implement Search Volumes comic vine service
             throw new NotImplementedException();
         }
 
         public string SearchIssues(string name)
         {
+            //TODO implement Search Issue comic vine service
             throw new NotImplementedException();
         }
 

@@ -39,7 +39,7 @@ namespace ComicHoarder.EComic
         }
 
         public string UpdateTextFile(string filename) //Update with other db id's? Will CVScraper overwrite if rescrape?
-        {
+        { //TODO implement text file updating in cbz file
             throw new NotImplementedException();
         }
 

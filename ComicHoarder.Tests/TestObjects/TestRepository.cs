@@ -229,5 +229,14 @@ namespace ComicHoarder.Tests
         {
             return "12345678";
         }
+
+
+        public PieChartMissingIssueRatio GetPieChartData(int publisherId)
+        {
+            PieChartMissingIssueRatio ratios = new PieChartMissingIssueRatio();
+            ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Collected", 2));
+            ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Missing", 4));
+            return ratios;
+        }
     }
 }

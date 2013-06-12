@@ -44,7 +44,7 @@
     <Compile Include="Interfaces\IEComicConverter.cs" />
     <Compile Include="Interfaces\IWebConnection.cs" />
     <Compile Include="Interfaces\IURLBuilder.cs" />
-    <Compile Include="Models\Copy of PieChartMissingIssueRatio.cs" />
+    <Compile Include="Models\BarChartMissingIssueRatio.cs" />
     <Compile Include="ParseHelper.cs" />
     <Compile Include="Interfaces\IWebDataConverter.cs" />
     <Compile Include="Interfaces\ICompressionController.cs" />

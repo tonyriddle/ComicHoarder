@@ -127,6 +127,15 @@ namespace ComicHoarder.Tests
             Assert.IsTrue(savedPublisher.name == "Cheetum Comics");
         }
 
+        [TestMethod]
+        public void CanGetPieChartData()
+        {
+            PieChartMissingIssueRatio ratios = repository.GetPieChartData(-1);
+            Assert.IsTrue(ratios.MissingIssueRatioList[0].Key == "Collected");
+            Assert.IsTrue(ratios.MissingIssueRatioList[0].Value == 2);
+            Assert.IsTrue(ratios.MissingIssueRatioList[1].Key == "Missing");
+            Assert.IsTrue(ratios.MissingIssueRatioList[1].Value == 4);
+        }
         //TODO Complete Repository Tests
 
 
@@ -204,7 +213,7 @@ namespace ComicHoarder.Tests
                     id = -3,
                     name = "Horses, Horses, Horses",
                     volumeId = -1,
-                    collected = true
+                    collected = false
                 },
                 new Issue
                 {

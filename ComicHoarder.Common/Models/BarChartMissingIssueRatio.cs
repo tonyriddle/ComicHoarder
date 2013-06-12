@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ComicHoarder.Common
 {
-    public class BarChartMissingIssueRatio
+    public class BarChartMissingIssueCount
     {
             public List<KeyValuePair<string, int>> MissingIssueCountList = new List<KeyValuePair<string, int>>();
-            //valueList.Add(new KeyValuePair<string, int>("Collected", totalcollected));
-            //valueList.Add(new KeyValuePair<string, int>("Missing", totalmissing));
     }
 }

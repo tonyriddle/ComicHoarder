@@ -103,37 +103,42 @@ namespace ComicHoarder.Repository
 
         public List<MissingIssue> GetMissingIssues(int id)
         {
-            return GetMissingIssues(id);
+            return repository.GetMissingIssues(id);
         }
 
         public bool UpdateVolumeToUncollectable(int id)
         {
-            return UpdateVolumeToUncollectable(id);
+            return repository.UpdateVolumeToUncollectable(id);
         }
 
         public bool PublisherExists(int id)
         {
-            return PublisherExists(id);
+            return repository.PublisherExists(id);
         }
 
         public bool VolumeExists(int id)
         {
-            return VolumeExists(id);
+            return repository.VolumeExists(id);
         }
 
         public bool IssueExists(int id)
         {
-            return IssueExists(id);
+            return repository.IssueExists(id);
         }
 
         public bool UpdateIssueToCollected(int id)
         {
-            return UpdateIssueToCollected(id);
+            return repository.UpdateIssueToCollected(id);
         }
 
         public string GetWebServiceKey(string name)
         {
-            return GetWebServiceKey(name);
+            return repository.GetWebServiceKey(name);
+        }
+
+        public PieChartMissingIssueRatio GetPieChartData(int publisherId)
+        {
+            return repository.GetPieChartData(publisherId);
         }
     }
 }

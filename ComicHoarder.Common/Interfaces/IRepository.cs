@@ -30,5 +30,6 @@ namespace ComicHoarder.Common
         bool IssueExists(int id);
         bool UpdateIssueToCollected(int id);
         string GetWebServiceKey(string name);
+        PieChartMissingIssueRatio GetPieChartData(int publisherId);
     }
 }
