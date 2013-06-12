@@ -72,3 +72,7 @@ D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\WPFToolkit.dll
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.pdb
+D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\WPFToolkit.pdb

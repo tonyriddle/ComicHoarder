@@ -72,6 +72,30 @@ namespace ComicHoarder.ViewModels
             }
         }
 
+        public PieChartMissingIssueRatio selectedPieChartRatio { get; set; }
+        public ObservableCollection<KeyValuePair<string,int>> PieChartRatios { get; set; }
+        public PieChartMissingIssueRatio SelectedPieChartRatio
+        {
+            get { return selectedPieChartRatio; }
+            set
+            {
+                selectedPieChartRatio = value;
+                NotifyPropertyChanged("PieChartRatios", 0);
+            }
+        }
+
+        public BarChartMissingIssueRatio selectedBarChartRatio { get; set; }
+        public ObservableCollection<KeyValuePair<string, int>> BarChartRatios { get; set; }
+        public BarChartMissingIssueRatio SelectedBarChartRatio
+        {
+            get { return selectedBarChartRatio; }
+            set
+            {
+                selectedBarChartRatio = value;
+                NotifyPropertyChanged("BarChartRatios", 0);
+            }
+        }
+
 
         public ComicHoarderViewModel()
         {
@@ -101,6 +125,32 @@ namespace ComicHoarder.ViewModels
             //TODO Replace with db call
             MissingIssues = new ObservableCollection<MissingIssue>();
             MissingIssues.Add(new MissingIssue { id = 1, name = "Wolverine 1", volume_id = 5 });
+
+            //TODO Replace with db call
+            ObservableCollection<KeyValuePair<string,int>> pieChartRatio = new ObservableCollection<KeyValuePair<string, int>>();
+            PieChartMissingIssueRatio ratios = new PieChartMissingIssueRatio();
+            ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Collected", 40638));
+            ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Missing", 2235));
+            foreach (KeyValuePair<string, int> ratio in ratios.MissingIssueRatioList)
+            {
+                pieChartRatio.Add(ratio);
+            }
+            PieChartRatios = pieChartRatio;
+
+            ObservableCollection<KeyValuePair<string, int>> barChartRatio = new ObservableCollection<KeyValuePair<string, int>>();
+            BarChartMissingIssueRatio barratios = new BarChartMissingIssueRatio();
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Marvel", 5638));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Atlas", 2235));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Timely", 1244));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Icon", 1508));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Amalgam", 1007));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("MAX", 500));
+            foreach (KeyValuePair<string, int> barratio in barratios.MissingIssueCountList)
+            {
+                barChartRatio.Add(barratio);
+            }
+            BarChartRatios = barChartRatio;
+
         }
 
         public ObservableCollection<Volume> UpdateVolumesAsync(int publisherId)
