@@ -46,6 +46,7 @@
     <Reference Include="System.Windows.Controls.Layout.Toolkit">
       <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,11 +67,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="AddPublisher.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>AddPublisher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\DelegateCommand.cs" />
     <Compile Include="ViewModels\ComicHoarderViewModel.cs" />
     <Compile Include="ViewModels\ComicHoarderViewModelCommands.cs" />
+    <Compile Include="ViewModels\PublisherSearchViewModelCommands.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\PublisherSearchViewModel.cs" />
+    <Page Include="AddPublisher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

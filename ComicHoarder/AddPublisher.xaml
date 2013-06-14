@@ -1,0 +1,47 @@
+﻿<Window x:Class="ComicHoarder.AddPublisher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:ComicHoarder.ViewModels"
+        Title="AddPublisher" Height="492.537" Width="300">
+    <Window.DataContext>
+        <local:PublisherSearchViewModel></local:PublisherSearchViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="1" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="5*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnSearch" Content="Search" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Width="Auto" Command="{Binding SearchPublishersCommand}"/>
+                    <TextBox x:Name="txtSearch" Grid.Column="0" HorizontalAlignment="Left" Height="22" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Text="{Binding SearchText}"/>
+                </Grid>
+                <Grid Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" >
+                    <DataGrid x:Name="dgPublishers" HorizontalAlignment="stretch" Margin="0,10,0,10" VerticalAlignment="Stretch" AutoGenerateColumns="false" ItemsSource="{Binding Publishers, Mode=TwoWay}" SelectedIndex="{Binding SelectedPublisher, Mode=TwoWay}" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+                <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnAdd" Content="Add Selected" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Center" Width="Auto" Command="{Binding AddPublisherCommand}" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

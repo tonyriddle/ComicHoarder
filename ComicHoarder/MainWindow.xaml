@@ -32,7 +32,7 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Label Content="Publishers" Grid.Column="0" Foreground="LightGray" />
-                <Button x:Name="btnAddPublisher" Content="Add" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddPublisherCommand}" />
+                <Button x:Name="btnAddPublisher" Content="Add" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding ShowAddPublisherWindowCommand}" />
             </Grid>
         </Grid>
         <Grid Name="VolumeGrid" Grid.Row="0" Grid.Column="1" Background="Black" Margin="1,1,1,1">
@@ -95,7 +95,7 @@
                 <Label Content="Missing Issues" Grid.Column="0" Foreground="LightGray" />
                 <TextBox x:Name="txtFindMissingIssues" Text="{Binding Path=Path, Mode=TwoWay}" Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center"/>
                 <Button x:Name="btnBrowseMissingIssues" Content="Browse" Grid.Column="3" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding BrowseMissingIssuesCommand}" />
-                <Button x:Name="btnAddMissingIssues" Content="Add" Grid.Column="4" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding AddMissingIssuesCommand}" />
+                <Button x:Name="btnCollectMissingIssues" Content="Collect" Grid.Column="4" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding CollectMissingIssuesCommand}" />
                 <Button x:Name="btnExportMissingIssues" Content="Export" Grid.Column="5" HorizontalAlignment="Stretch" Margin="0,0,2,0" VerticalAlignment="Center" Command="{Binding ExportMissingIssuesCommand}" />
             </Grid>        
         </Grid>

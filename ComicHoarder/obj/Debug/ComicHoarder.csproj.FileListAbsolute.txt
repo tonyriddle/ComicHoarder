@@ -79,3 +79,5 @@ D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder\bin\Debug\WPFToolkit.pd
 C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
 C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll
 C:\GitHub\ComicHoarder\ComicHoarder\bin\Debug\WPFToolkit.dll
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\AddPublisher.baml
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\AddPublisher.g.cs
