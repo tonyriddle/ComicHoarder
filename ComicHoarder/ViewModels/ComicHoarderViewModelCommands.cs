@@ -12,9 +12,9 @@ namespace ComicHoarder.ViewModels
         private ComicHoarder.AddPublisher pubWindow;
         private FolderBrowserDialog folderBrowser;
         
-        //TODO at least pull these out to a partial class, new class would be better
         public ObservableCollection<Volume> UpdateVolumesAsync(int publisherId)
         {
+            //TODO Pull from dB depending on selected publisher
             ObservableCollection<Volume> newVolumes = new ObservableCollection<Volume>();
             if (publisherId == 31)
             {
@@ -31,6 +31,7 @@ namespace ComicHoarder.ViewModels
 
         public ObservableCollection<Issue> UpdateIssuesAsync(int volumeId)
         {
+            //TODO pull from db depending on selected Volume
             ObservableCollection<Issue> newIssues = new ObservableCollection<Issue>();
             if (volumeId == 1)
             {
@@ -68,7 +69,7 @@ namespace ComicHoarder.ViewModels
                 pubWindow.Closed += AddPublisherWindowClosed;
                 pubWindow.Show();
             }
-            //MessageBox.Show("Hello There");
+            //TODO add publisher from pubWindow
             int p = selectedPublisher;
             int myCount = Publishers.Count();
             string SomeText = String.Empty;
@@ -86,6 +87,7 @@ namespace ComicHoarder.ViewModels
 
         private void AddVolumes()
         {
+            //TODO implement add volumes
             MessageBox.Show("Add Volumes");
             int p = selectedVolume;
             int myCount = Volumes.Count();
@@ -99,6 +101,7 @@ namespace ComicHoarder.ViewModels
 
         private void FindVolumes()
         {
+            //TODO implement find volumes (is this any different than add?)
             MessageBox.Show("Find Volumes");
             int p = selectedVolume;
             int myCount = Volumes.Count();
@@ -112,6 +115,7 @@ namespace ComicHoarder.ViewModels
 
         private void AddIssues()
         {
+            //TODO implement add issues 
             MessageBox.Show("Add Issues");
             int p = selectedIssue;
             int myCount = Issues.Count();
@@ -125,6 +129,7 @@ namespace ComicHoarder.ViewModels
 
         private void FindIssues()
         {
+            //TODO implement find issues (is this any different than add?)
             MessageBox.Show("Find Issues");
             int p = selectedIssue;
             int myCount = Issues.Count();
@@ -154,6 +159,7 @@ namespace ComicHoarder.ViewModels
 
         private void CollectMissingIssues()
         {
+            //implement collect (update do collected) missing issues - including adding issues - volumes - publishers if necessary
             MessageBox.Show("Collecting MissingIssues");
             int p = selectedMissingIssue;
             int myCount = MissingIssues.Count();
@@ -167,6 +173,7 @@ namespace ComicHoarder.ViewModels
 
         private void ExportMissingIssues()
         {
+            //TODO implement export missing issues
             MessageBox.Show("Export MissingIssues");
             int p = selectedMissingIssue;
             int myCount = MissingIssues.Count();
