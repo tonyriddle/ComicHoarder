@@ -20,7 +20,7 @@ namespace ComicHoarder
             //TODO appconfig
             //AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicHoarder\");
             //constring = ConfigurationManager.ConnectionStrings["ComicHoarderConnectionString"].ToString();
-            constring = @"Server=localhost\SQLEXPRESS;Database=ComicHoarderOld;User Id=sa;Password=bikes;";
+            constring = @"Server=localhost;Database=ComicHoarderOld;User Id=sa;Password=bike@33";
         }
 
         public MSSQLDatabase(string connectionstring)
@@ -799,7 +799,7 @@ namespace ComicHoarder
             PieChartMissingIssueRatio pieChartData = new PieChartMissingIssueRatio();
             using (SqlConnection con = new SqlConnection(constring))
             {
-                SqlCommand command = new SqlCommand("select count(id) as count from issues i join volumes v on i.volumeid = v.id join publishers p on p.id = v.publisherid where p.id = @id and issues.collected = true", con);
+                SqlCommand command = new SqlCommand("select count(id) as count from issue i join volume v on i.volumeid = v.id join publisher p on p.id = v.publisher_id where p.id = @id and issues.collected = true", con);
                 command.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter ad = new SqlDataAdapter(command);
                 DataSet ds = new DataSet("issueCount");
@@ -808,7 +808,7 @@ namespace ComicHoarder
                 int issueCount = 0;
                 Int32.TryParse(strIssueCount, out issueCount);
 
-                SqlCommand missingCommand = new SqlCommand("select count(id) as count from issues i join volumes v on i.volumeid = v.id join publishers p on p.id = v.publisherid where p.id = @id and issues.collected = false", con);
+                SqlCommand missingCommand = new SqlCommand("select count(id) as count from issue i join volume v on i.volumeid = v.id join publisher p on p.id = v.publisher_id where p.id = @id and issues.collected = false", con);
                 missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
                 DataSet missingds = new DataSet("issueMissingCount");
