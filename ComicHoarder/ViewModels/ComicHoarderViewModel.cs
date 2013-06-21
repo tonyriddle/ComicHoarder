@@ -138,6 +138,7 @@ namespace ComicHoarder.ViewModels
             }
             PieChartRatios = pieChartRatio;
 
+            //TODO replace with db call
             ObservableCollection<KeyValuePair<string, int>> barChartRatio = new ObservableCollection<KeyValuePair<string, int>>();
             BarChartMissingIssueCount barratios = new BarChartMissingIssueCount();
             barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Marvel", 5638));
@@ -152,9 +153,11 @@ namespace ComicHoarder.ViewModels
             }
             BarChartRatios = barChartRatio;
 
+            //TODO remove this and put messages in each command
             Messages = "First Message";
             Messages = Messages + "\n" + "Second Message";
 
+            //TODO move default path to config file
             Path = @"D:\Incoming\";
         }
     }
