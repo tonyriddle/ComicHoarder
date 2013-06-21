@@ -799,7 +799,7 @@ namespace ComicHoarder
             PieChartMissingIssueRatio pieChartData = new PieChartMissingIssueRatio();
             using (SqlConnection con = new SqlConnection(constring))
             {
-                SqlCommand command = new SqlCommand("select count(id) as count from issue i join volume v on i.volumeid = v.id join publisher p on p.id = v.publisher_id where p.id = @id and issues.collected = true", con);
+                SqlCommand command = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 1", con);
                 command.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter ad = new SqlDataAdapter(command);
                 DataSet ds = new DataSet("issueCount");
@@ -808,14 +808,14 @@ namespace ComicHoarder
                 int issueCount = 0;
                 Int32.TryParse(strIssueCount, out issueCount);
 
-                SqlCommand missingCommand = new SqlCommand("select count(id) as count from issue i join volume v on i.volumeid = v.id join publisher p on p.id = v.publisher_id where p.id = @id and issues.collected = false", con);
+                SqlCommand missingCommand = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 0", con);
                 missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
                 DataSet missingds = new DataSet("issueMissingCount");
-                ad.Fill(missingds);
-                string strMissingIssueCount = ds.Tables[0].Rows[0]["count"].ToString();
+                missingad.Fill(missingds);
+                string strMissingIssueCount = missingds.Tables[0].Rows[0]["count"].ToString();
                 int missingIssueCount = 0;
-                Int32.TryParse(strIssueCount, out missingIssueCount);
+                Int32.TryParse(strMissingIssueCount, out missingIssueCount);
 
                 pieChartData.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Collected", issueCount));
                 pieChartData.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Missing", missingIssueCount));
