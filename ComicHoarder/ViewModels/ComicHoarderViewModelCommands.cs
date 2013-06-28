@@ -1,5 +1,6 @@
 ﻿using ComicHoarder.Common;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,48 +13,14 @@ namespace ComicHoarder.ViewModels
         private ComicHoarder.AddPublisher pubWindow;
         private FolderBrowserDialog folderBrowser;
         
-        public ObservableCollection<Volume> UpdateVolumesAsync(int publisherId)
+        public ObservableCollection<Volume> ReloadVolumesAsync(int publisherId)
         {
-            //TODO Pull from dB depending on selected publisher
-            ObservableCollection<Volume> newVolumes = new ObservableCollection<Volume>();
-            if (publisherId == 31)
-            {
-                newVolumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
-                newVolumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
-            }
-            else
-            {
-                newVolumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
-                newVolumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
-            }
-            return newVolumes;
+            return new ObservableCollection<Volume>(repository.GetVolumes(publisherId));
         }
 
-        public ObservableCollection<Issue> UpdateIssuesAsync(int volumeId)
+        public ObservableCollection<Issue> ReloadIssuesAsync(int volumeId)
         {
-            //TODO pull from db depending on selected Volume
-            ObservableCollection<Issue> newIssues = new ObservableCollection<Issue>();
-            if (volumeId == 1)
-            {
-                newIssues.Add(new Issue { id = 1, volumeId = 1, name = "Spider-Man 1" });
-                newIssues.Add(new Issue { id = 2, volumeId = 1, name = "Spider-Man 2" });
-            }
-            else if(volumeId == 2)
-            {
-                newIssues.Add(new Issue { id = 3, volumeId = 2, name = "Spider-Man v2 1" });
-                newIssues.Add(new Issue { id = 4, volumeId = 2, name = "Spider-Man v2 2" });
-            }
-            else if (volumeId == 3)
-            {
-                newIssues.Add(new Issue { id = 5, volumeId = 3, name = "Blue Beetle 1" });
-                newIssues.Add(new Issue { id = 6, volumeId = 3, name = "Blue Beetle 2" });
-            }
-            else if (volumeId == 4)
-            {
-                newIssues.Add(new Issue { id = 7, volumeId = 4, name = "Blue Beetle v2 1" });
-                newIssues.Add(new Issue { id = 8, volumeId = 4, name = "Blue Beetle v2 2" });
-            }
-            return newIssues;
+            return new ObservableCollection<Issue>(repository.GetIssues(volumeId));
         }
 
         public ICommand ShowAddPublisherWindowCommand
@@ -69,10 +36,9 @@ namespace ComicHoarder.ViewModels
                 pubWindow.Closed += AddPublisherWindowClosed;
                 pubWindow.Show();
             }
-            //TODO add publisher from pubWindow
-            int p = selectedPublisher;
-            int myCount = Publishers.Count();
-            string SomeText = String.Empty;
+            Publishers = new ObservableCollection<Publisher>(repository.GetPublishers());
+            PrintMessage("Added new Publisher...");
+            NotifyPropertyChanged("Publisher", 0);
         }
 
         private void AddPublisherWindowClosed(object sender, EventArgs e)
@@ -85,27 +51,20 @@ namespace ComicHoarder.ViewModels
             get { return new DelegateCommand(AddVolumes); }
         }
 
-        private void AddVolumes()
+        private void AddVolumes() //Adds volumes based on selected publisher
         {
-            //TODO implement add volumes
-            MessageBox.Show("Add Volumes");
-            int p = selectedVolume;
-            int myCount = Volumes.Count();
-            string SomeText = String.Empty;
-        }
-
-        public ICommand FindVolumesCommand
-        {
-            get { return new DelegateCommand(FindVolumes); }
-        }
-
-        private void FindVolumes()
-        {
-            //TODO implement find volumes (is this any different than add?)
-            MessageBox.Show("Find Volumes");
-            int p = selectedVolume;
-            int myCount = Volumes.Count();
-            string SomeText = String.Empty;
+            List<Volume> skeletonVolumes = webDataService.GetVolumesFromPublisher(SelectedPublisher);
+            foreach (Volume vol in skeletonVolumes)
+            {
+                if (!repository.VolumeExists(vol.id))
+                {
+                    PrintMessage("Getting Volume - " + vol.name + "...");
+                    Volume volume = webDataService.GetVolume(vol.id);
+                    repository.Save(volume);
+                }
+            }
+            Volumes = new ObservableCollection<Volume>(repository.GetVolumes(SelectedPublisher));
+            NotifyPropertyChanged("Volumes", 0);
         }
 
         public ICommand AddIssuesCommand
@@ -113,13 +72,19 @@ namespace ComicHoarder.ViewModels
             get { return new DelegateCommand(AddIssues); }
         }
 
-        private void AddIssues()
+        private void AddIssues() //Add issues by selected volume
         {
-            //TODO implement add issues 
-            MessageBox.Show("Add Issues");
-            int p = selectedIssue;
-            int myCount = Issues.Count();
-            string SomeText = String.Empty;
+            List<Issue> skeletonIssues = webDataService.GetIssuesFromVolume(SelectedVolume);
+            foreach (Issue iss in skeletonIssues)
+            {
+                if (!repository.IssueExists(iss.id))
+                {
+                    Issue issue = webDataService.GetIssue(iss.id);
+                    repository.Save(issue);
+                }
+            }
+            Issues = new ObservableCollection<Issue>(repository.GetIssues(SelectedVolume));
+            NotifyPropertyChanged("Issues", 0);
         }
 
         public ICommand FindIssuesCommand
@@ -127,13 +92,27 @@ namespace ComicHoarder.ViewModels
             get { return new DelegateCommand(FindIssues); }
         }
 
-        private void FindIssues()
+        private void FindIssues() //Find any issues by selected publisher
         {
-            //TODO implement find issues (is this any different than add?)
-            MessageBox.Show("Find Issues");
-            int p = selectedIssue;
-            int myCount = Issues.Count();
-            string SomeText = String.Empty;
+            List<Volume> skeletonVolumes = webDataService.GetVolumesFromPublisher(SelectedPublisher);
+            foreach (Volume vol in skeletonVolumes)
+            {
+                if (!repository.VolumeExists(vol.id)) //if volume does not exist, then get and save
+                {
+                    repository.Save(webDataService.GetVolume(vol.id));
+                }
+                List<Issue> skeletonIssues = webDataService.GetIssuesFromVolume(vol.id);
+                foreach (Issue iss in skeletonIssues)
+                {
+                    if (!repository.IssueExists(iss.id))
+                    {
+                        Issue issue = webDataService.GetIssue(iss.id);
+                        repository.Save(issue);
+                    }
+                }
+            }
+            Issues = new ObservableCollection<Issue>(repository.GetIssues(SelectedVolume));
+            NotifyPropertyChanged("Issues", 0);
         }
 
         public ICommand BrowseMissingIssuesCommand
@@ -178,6 +157,11 @@ namespace ComicHoarder.ViewModels
             int p = selectedMissingIssue;
             int myCount = MissingIssues.Count();
             string SomeText = String.Empty;
+        }
+
+        private void PrintMessage(string message)
+        {
+            Messages = Messages + "/n" + message;
         }
     }
 }

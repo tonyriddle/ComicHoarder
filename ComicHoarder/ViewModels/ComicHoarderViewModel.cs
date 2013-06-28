@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 using ComicHoarder.Common;
 using System.Windows.Input;
 using System.Windows;
+using ComicHoarder.Repository;
+using ComicHoarder.WebData;
 
 namespace ComicHoarder.ViewModels
 {
     public partial class ComicHoarderViewModel : ViewModelBase
     {
+        IRepository repository;
+        IWebDataService webDataService;
+
         private int selectedPublisher = 0;
         public ObservableCollection<Publisher> Publishers { get; set; }
         public int SelectedPublisher
@@ -19,11 +24,14 @@ namespace ComicHoarder.ViewModels
             set
             {
                 selectedPublisher = Publishers[value].id;
-                Task<ObservableCollection<Volume>> t = Task<ObservableCollection<Volume>>.Factory.StartNew(() => UpdateVolumesAsync(Publishers[value].id));
+                Task<ObservableCollection<Volume>> t = Task<ObservableCollection<Volume>>.Factory.StartNew(() => ReloadVolumesAsync(Publishers[value].id));
                 Volumes.Clear();
                 Volumes = t.Result;
+                //todo update missingissues and piechartratios
                 NotifyPropertyChanged("Publisher", value);
                 NotifyPropertyChanged("Volumes", value);
+                NotifyPropertyChanged("MissingIssues", value);
+                NotifyPropertyChanged("PieChartRatios", value);
             }
         }
 
@@ -37,12 +45,11 @@ namespace ComicHoarder.ViewModels
                 selectedVolume = value == -1 ? 0 : Volumes[value].id;
                 if (selectedVolume != 0)
                 {
-                    Task<ObservableCollection<Issue>> t = Task<ObservableCollection<Issue>>.Factory.StartNew(() => UpdateIssuesAsync(Volumes[value].id));
+                    Task<ObservableCollection<Issue>> t = Task<ObservableCollection<Issue>>.Factory.StartNew(() => ReloadIssuesAsync(Volumes[value].id));
                     Issues.Clear();
                     Issues = t.Result;
                     NotifyPropertyChanged("Issues", value);
                 }
-                NotifyPropertyChanged("Volumes", value);
             }
         }
 
@@ -100,58 +107,60 @@ namespace ComicHoarder.ViewModels
 
         public ComicHoarderViewModel()
         {
-            Publishers = new ObservableCollection<Publisher>();
-            //TODO Replace with db call
-            Publishers.Add(new Publisher { name = "Marvel", id = 31 });
-            Publishers.Add(new Publisher { name = "Charlton", id = 125 });
-            selectedPublisher = Publishers[0].id;
-            Volumes = new ObservableCollection<Volume>();
-            //TODO Replace with db call
-            Volumes.Add(new Volume { name = "Spiderman", id = 1, publisherId = 31 });
-            Volumes.Add(new Volume { name = "Spiderman v2", id = 2, publisherId = 31 });
-            Volumes.Add(new Volume { name = "Blue Beetle", id = 3, publisherId = 125 });
-            Volumes.Add(new Volume { name = "Blue Beetle v2", id = 4, publisherId = 125 });
-            selectedVolume = Volumes[0].id;
-            //TODO Replace with db call
-            Issues = new ObservableCollection<Issue>();
-            Issues.Add(new Issue { id = 1, volumeId = 1, name = "Spider-Man 1" });
-            Issues.Add(new Issue { id = 2, volumeId = 1, name = "Spider-Man 2" });
-            Issues.Add(new Issue { id = 3, volumeId = 2, name = "Spider-Man v2 1" });
-            Issues.Add(new Issue { id = 4, volumeId = 2, name = "Spider-Man v2 2" });
-            Issues.Add(new Issue { id = 5, volumeId = 3, name = "Blue Beetle 1" });
-            Issues.Add(new Issue { id = 6, volumeId = 3, name = "Blue Beetle 2" });
-            Issues.Add(new Issue { id = 7, volumeId = 4, name = "Blue Beetle v2 1" });
-            Issues.Add(new Issue { id = 8, volumeId = 4, name = "Blue Beetle v2 2" });
+            repository = new RepositoryService();
+            webDataService = new WebDataService("UseComicVineScraperKey");
 
-            //TODO Replace with db call
-            MissingIssues = new ObservableCollection<MissingIssue>();
-            MissingIssues.Add(new MissingIssue { id = 1, name = "Wolverine 1", volume_id = 5 });
+            Publishers = new ObservableCollection<Publisher>(repository.GetPublishers());
+            if (Publishers.Count() > 0) 
+            {
+                selectedPublisher = Publishers[0].id; //select first publisher
+            }
 
-            //TODO Replace with db call
-            ObservableCollection<KeyValuePair<string, int>> pieChartRatio = new ObservableCollection<KeyValuePair<string, int>>();
-            PieChartMissingIssueRatio ratios = new PieChartMissingIssueRatio();
-            ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Collected", 40638));
-            ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Missing", 2235));
+            if (selectedPublisher != 0) //no publisher selected
+            {
+                Volumes = new ObservableCollection<Volume>(repository.GetVolumes(selectedPublisher)); //get volumes from selected publisher
+                if (Volumes.Count() > 0)
+                {
+                    selectedVolume = Volumes[0].id; //select first volume
+                }
+            }
+            else
+            {
+                Volumes = new ObservableCollection<Volume>(); //empty volumes
+            }
+
+            if (selectedVolume != 0)
+            {
+                Issues = new ObservableCollection<Issue>(repository.GetIssues(selectedVolume));
+                if (Issues.Count() > 0)
+                {
+                    SelectedIssue = Issues[0].id;
+                }
+            }
+            else
+            {
+                Issues = new ObservableCollection<Issue>();
+            }
+
+            MissingIssues = new ObservableCollection<MissingIssue>(repository.GetMissingIssues(selectedPublisher));
+
+            PieChartRatios = new ObservableCollection<KeyValuePair<string, int>>();
+            PieChartMissingIssueRatio ratios = repository.GetPieChartData(SelectedPublisher);
             foreach (KeyValuePair<string, int> ratio in ratios.MissingIssueRatioList)
             {
-                pieChartRatio.Add(ratio);
+                PieChartRatios.Add(ratio);
             }
-            PieChartRatios = pieChartRatio;
 
             //TODO replace with db call
-            ObservableCollection<KeyValuePair<string, int>> barChartRatio = new ObservableCollection<KeyValuePair<string, int>>();
-            BarChartMissingIssueCount barratios = new BarChartMissingIssueCount();
-            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Marvel", 5638));
-            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Atlas", 2235));
-            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Timely", 1244));
-            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Icon", 1508));
-            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Amalgam", 1007));
-            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("MAX", 500));
+            BarChartRatios = new ObservableCollection<KeyValuePair<string, int>>();
+            List<int> publisherIds = (from p in Publishers
+                                        where p.enabled == true
+                                        select p.id).ToList();
+            BarChartMissingIssueCount barratios = repository.GetBarChartData(publisherIds);
             foreach (KeyValuePair<string, int> barratio in barratios.MissingIssueCountList)
             {
-                barChartRatio.Add(barratio);
+                BarChartRatios.Add(barratio);
             }
-            BarChartRatios = barChartRatio;
 
             //TODO remove this and put messages in each command
             Messages = "First Message";

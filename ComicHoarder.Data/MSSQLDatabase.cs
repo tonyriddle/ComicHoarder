@@ -793,35 +793,66 @@ namespace ComicHoarder
             }
         }
 
-
         public PieChartMissingIssueRatio GetPieChartData(int publisherId)
         {
             PieChartMissingIssueRatio pieChartData = new PieChartMissingIssueRatio();
             using (SqlConnection con = new SqlConnection(constring))
             {
+                int issueCount = 0;
+                int missingIssueCount = 0;
                 SqlCommand command = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 1", con);
                 command.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter ad = new SqlDataAdapter(command);
                 DataSet ds = new DataSet("issueCount");
                 ad.Fill(ds);
-                string strIssueCount = ds.Tables[0].Rows[0]["count"].ToString();
-                int issueCount = 0;
-                Int32.TryParse(strIssueCount, out issueCount);
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+                    string strIssueCount = ds.Tables[0].Rows[0]["count"].ToString();
+                    issueCount = 0;
+                    Int32.TryParse(strIssueCount, out issueCount);
+                }
 
                 SqlCommand missingCommand = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 0", con);
                 missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
                 DataSet missingds = new DataSet("issueMissingCount");
                 missingad.Fill(missingds);
-                string strMissingIssueCount = missingds.Tables[0].Rows[0]["count"].ToString();
-                int missingIssueCount = 0;
-                Int32.TryParse(strMissingIssueCount, out missingIssueCount);
+                if (missingds.Tables[0].Rows.Count != 0)
+                {
+                    string strMissingIssueCount = missingds.Tables[0].Rows[0]["count"].ToString();
+                    missingIssueCount = 0;
+                    Int32.TryParse(strMissingIssueCount, out missingIssueCount);
+                }
 
                 pieChartData.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Collected", issueCount));
                 pieChartData.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Missing", missingIssueCount));
             }
             return pieChartData;
             //TODO Test GetPieChartData
+        }
+
+        public BarChartMissingIssueCount GetBarChartData(List<int> publisherId)
+        {
+            BarChartMissingIssueCount barChartMissingIssueCount = new BarChartMissingIssueCount();
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                foreach (int id in publisherId)
+                {
+                    SqlCommand missingCommand = new SqlCommand("select count(i.id) as count, p.name as publisher from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 0", con);
+                    missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
+                    SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
+                    DataSet missingds = new DataSet("issueMissingCount");
+                    missingad.Fill(missingds);
+                    if (missingds.Tables[0].Rows.Count != 0)
+                    {
+                        int iMissingIssueCount = 0;
+                        Int32.TryParse(missingds.Tables[0].Rows[0]["count"].ToString(), out iMissingIssueCount);
+                        string strPublisher = missingds.Tables[0].Rows[0]["publisher"].ToString();
+                        barChartMissingIssueCount.MissingIssueCountList.Add(new KeyValuePair<string, int>(strPublisher, iMissingIssueCount)); 
+                    }
+                }
+            }
+            return barChartMissingIssueCount;
         }
     }
 }

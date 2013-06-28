@@ -140,5 +140,10 @@ namespace ComicHoarder.Repository
         {
             return repository.GetPieChartData(publisherId);
         }
+
+        public BarChartMissingIssueCount GetBarChartData(List<int> publisherId)
+        {
+            return repository.GetBarChartData(publisherId);
+        }
     }
 }

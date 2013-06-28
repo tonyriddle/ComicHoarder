@@ -1,6 +1,7 @@
 ﻿using ComicHoarder.Common;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,11 @@ namespace ComicHoarder.ViewModels
 
         private void SearchPublishers()
         {
-            //TODO Search Publishers and Fill Publishers with results
-            MessageBox.Show("Search Publishers " + SearchText);
-            Publishers.Add(new Publisher { name = "found in search", id = 4 });
+            if (SearchText != "") //SearchText Needs something to search
+            {
+                List<Publisher> publishers = webDataService.SearchPublishers(SearchText);
+                Publishers = new ObservableCollection<Publisher>(publishers);
+            }
         }
 
         public ICommand AddPublisherCommand
@@ -31,8 +34,13 @@ namespace ComicHoarder.ViewModels
 
         private void AddPublisher()
         {
-            //TODO save selected publisher
-            MessageBox.Show("hi " + SelectedPublisher);
+            if (SelectedPublisher != 0) //no publisher selected
+            {
+                Publisher selectedPublisher = (from p in Publishers
+                                               where p.id == SelectedPublisher
+                                               select p).FirstOrDefault();
+                repository.Save(selectedPublisher);
+            }
         }
 
     }
