@@ -33,3 +33,10 @@ D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.WebData\bin\Debug\Comic
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.WebData\obj\Debug\ComicHoarder.WebData.csprojResolveAssemblyReference.cache
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.WebData\obj\Debug\ComicHoarder.WebData.dll
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.WebData\obj\Debug\ComicHoarder.WebData.pdb
+D:\Projects\ComicHoarder\ComicHoarder.WebData\bin\Debug\ComicHoarder.WebData.dll
+D:\Projects\ComicHoarder\ComicHoarder.WebData\bin\Debug\ComicHoarder.WebData.pdb
+D:\Projects\ComicHoarder\ComicHoarder.WebData\bin\Debug\ComicHoarder.Entities.dll
+D:\Projects\ComicHoarder\ComicHoarder.WebData\bin\Debug\ComicHoarder.Entities.pdb
+D:\Projects\ComicHoarder\ComicHoarder.WebData\obj\Debug\ComicHoarder.WebData.csprojResolveAssemblyReference.cache
+D:\Projects\ComicHoarder\ComicHoarder.WebData\obj\Debug\ComicHoarder.WebData.dll
+D:\Projects\ComicHoarder\ComicHoarder.WebData\obj\Debug\ComicHoarder.WebData.pdb

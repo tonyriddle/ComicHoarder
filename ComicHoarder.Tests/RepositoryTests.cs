@@ -9,8 +9,8 @@ namespace ComicHoarder.Tests
     [TestClass]
     public class RepositoryTests
     {
-        string testMode = "Test";
-        //string testMode = "Live";
+        //string testMode = "Test";
+        string testMode = "Live";
 
         IRepository repository;
         RepositoryService service;
