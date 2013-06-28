@@ -120,7 +120,7 @@ namespace ComicHoarder
 
         public bool Save(List<Publisher> publishers)
         {
-            int rowsupdated = 0; //TODO make this work right and be threaded and update the interface instead of having this in here to watch while running
+            int rowsupdated = 0; 
             int errors = 0;
             foreach (Publisher publisher in publishers)
             {
