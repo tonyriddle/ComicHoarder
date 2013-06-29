@@ -24,10 +24,5 @@ namespace ComicHoarder
         {
             InitializeComponent();
         }
-
-        private void dgPublishers_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

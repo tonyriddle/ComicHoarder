@@ -238,5 +238,18 @@ namespace ComicHoarder.Tests
             ratios.MissingIssueRatioList.Add(new KeyValuePair<string, int>("Missing", 4));
             return ratios;
         }
+
+
+        public BarChartMissingIssueCount GetBarChartData(List<int> publisherId)
+        {
+            BarChartMissingIssueCount barratios = new BarChartMissingIssueCount();
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Marvel", 5638));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Atlas", 2235));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Timely", 1244));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Icon", 1508));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("Amalgam", 1007));
+            barratios.MissingIssueCountList.Add(new KeyValuePair<string, int>("MAX", 500));
+            return barratios;
+        }
     }
 }

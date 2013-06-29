@@ -20,14 +20,6 @@ C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EC
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.dll
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.pdb
 C:\Users\Tony\Desktop\ComicHoarder\ComicHoarder.EComic\bin\Debug\Ionic.Zip.Reduced.dll
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.EComic.dll
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.EComic.pdb
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.Entities.dll
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\Ionic.Zip.Reduced.dll
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.Entities.pdb
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.csprojResolveAssemblyReference.cache
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.dll
-C:\GitHub\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.pdb
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.EComic.dll
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.EComic.pdb
 D:\Test Projects\ComicHoarder2\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.Entities.dll
@@ -44,3 +36,11 @@ D:\Projects\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.Entities.pdb
 D:\Projects\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.csprojResolveAssemblyReference.cache
 D:\Projects\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.dll
 D:\Projects\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.pdb
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.EComic.dll
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.EComic.pdb
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.Entities.dll
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\Ionic.Zip.Reduced.dll
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\bin\Debug\ComicHoarder.Entities.pdb
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.csprojResolveAssemblyReference.cache
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.dll
+C:\GitHub\ComicHoarder\ComicHoarder.EComic\obj\Debug\ComicHoarder.EComic.pdb
