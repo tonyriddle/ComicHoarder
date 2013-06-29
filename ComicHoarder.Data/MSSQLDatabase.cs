@@ -20,7 +20,7 @@ namespace ComicHoarder
             //TODO appconfig
             //AppDomain.CurrentDomain.SetData("DataDirectory", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicHoarder\");
             //constring = ConfigurationManager.ConnectionStrings["ComicHoarderConnectionString"].ToString();
-            constring = @"Server=localhost;Database=ComicHoarderOld;User Id=sa;Password=bike@33";
+            constring = @"Server=localhost;Database=ComicHoarder;User Id=sa;Password=bike@33";
         }
 
         public MSSQLDatabase(string connectionstring)
@@ -780,7 +780,7 @@ namespace ComicHoarder
         }
 
 
-        public string GetWebServiceKey(string name)
+        public string GetSetting(string name)
         {
             using (SqlConnection con = new SqlConnection(constring))
             {
@@ -838,17 +838,24 @@ namespace ComicHoarder
             {
                 foreach (int id in publisherId)
                 {
-                    SqlCommand missingCommand = new SqlCommand("select count(i.id) as count, p.name as publisher from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 0", con);
-                    missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
-                    SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
-                    DataSet missingds = new DataSet("issueMissingCount");
-                    missingad.Fill(missingds);
-                    if (missingds.Tables[0].Rows.Count != 0)
+                    try
                     {
-                        int iMissingIssueCount = 0;
-                        Int32.TryParse(missingds.Tables[0].Rows[0]["count"].ToString(), out iMissingIssueCount);
-                        string strPublisher = missingds.Tables[0].Rows[0]["publisher"].ToString();
-                        barChartMissingIssueCount.MissingIssueCountList.Add(new KeyValuePair<string, int>(strPublisher, iMissingIssueCount)); 
+                        SqlCommand missingCommand = new SqlCommand("select count(i.id) as count, p.name as publisher from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 0 group by p.name", con);
+                        missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                        SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
+                        DataSet missingds = new DataSet("issueMissingCount");
+                        missingad.Fill(missingds);
+                        if (missingds.Tables[0].Rows.Count != 0)
+                        {
+                            int iMissingIssueCount = 0;
+                            Int32.TryParse(missingds.Tables[0].Rows[0]["count"].ToString(), out iMissingIssueCount);
+                            string strPublisher = missingds.Tables[0].Rows[0]["publisher"].ToString();
+                            barChartMissingIssueCount.MissingIssueCountList.Add(new KeyValuePair<string, int>(strPublisher, iMissingIssueCount));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string message = ex.Message;
                     }
                 }
             }

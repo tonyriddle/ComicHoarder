@@ -4,10 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using ComicHoarder.Common;
-using System.Windows.Input;
-using System.Windows;
+//using System.Windows;
 using ComicHoarder.Repository;
 using ComicHoarder.WebData;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace ComicHoarder.ViewModels
 {
@@ -28,7 +29,7 @@ namespace ComicHoarder.ViewModels
                 Volumes.Clear();
                 Volumes = t.Result;
                 //todo update missingissues and piechartratios
-                NotifyPropertyChanged("Publisher", value);
+                NotifyPropertyChanged("Publishers", value);
                 NotifyPropertyChanged("Volumes", value);
                 NotifyPropertyChanged("MissingIssues", value);
                 NotifyPropertyChanged("PieChartRatios", value);
@@ -108,7 +109,7 @@ namespace ComicHoarder.ViewModels
         public ComicHoarderViewModel()
         {
             repository = new RepositoryService();
-            webDataService = new WebDataService("UseComicVineScraperKey");
+            webDataService = new WebDataService(repository.GetSetting("ComicVineKey"));
 
             Publishers = new ObservableCollection<Publisher>(repository.GetPublishers());
             if (Publishers.Count() > 0) 
@@ -169,5 +170,6 @@ namespace ComicHoarder.ViewModels
             //TODO move default path to config file
             Path = @"D:\Incoming\";
         }
+
     }
 }

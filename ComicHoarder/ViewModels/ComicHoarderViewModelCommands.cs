@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
 
@@ -12,7 +13,7 @@ namespace ComicHoarder.ViewModels
     {
         private ComicHoarder.AddPublisher pubWindow;
         private FolderBrowserDialog folderBrowser;
-        
+
         public ObservableCollection<Volume> ReloadVolumesAsync(int publisherId)
         {
             return new ObservableCollection<Volume>(repository.GetVolumes(publisherId));
@@ -36,22 +37,28 @@ namespace ComicHoarder.ViewModels
                 pubWindow.Closed += AddPublisherWindowClosed;
                 pubWindow.Show();
             }
-            Publishers = new ObservableCollection<Publisher>(repository.GetPublishers());
-            PrintMessage("Added new Publisher...");
-            NotifyPropertyChanged("Publisher", 0);
         }
 
         private void AddPublisherWindowClosed(object sender, EventArgs e)
         {
             pubWindow = null;
+            Publishers = new ObservableCollection<Publisher>(repository.GetPublishers());
+            PrintMessage("Added new Publisher...");
+            NotifyPropertyChanged("Publishers", 0);
+            NotifyPropertyChanged("Messages", 0);
         }
 
         public ICommand AddVolumesCommand
         {
-            get { return new DelegateCommand(AddVolumes); }
+            get { return new DelegateCommand(AddVolumesAsync); }
         }
 
-        private void AddVolumes() //Adds volumes based on selected publisher
+        private void AddVolumesAsync()
+        {
+            Task<bool> t = Task<bool>.Factory.StartNew(() => AddVolumes());
+        }
+
+        private bool AddVolumes() //Adds volumes based on selected publisher
         {
             List<Volume> skeletonVolumes = webDataService.GetVolumesFromPublisher(SelectedPublisher);
             foreach (Volume vol in skeletonVolumes)
@@ -59,32 +66,42 @@ namespace ComicHoarder.ViewModels
                 if (!repository.VolumeExists(vol.id))
                 {
                     PrintMessage("Getting Volume - " + vol.name + "...");
+                    NotifyPropertyChanged("Messages", 0);
                     Volume volume = webDataService.GetVolume(vol.id);
                     repository.Save(volume);
                 }
             }
             Volumes = new ObservableCollection<Volume>(repository.GetVolumes(SelectedPublisher));
             NotifyPropertyChanged("Volumes", 0);
+            return true;
         }
 
         public ICommand AddIssuesCommand
         {
-            get { return new DelegateCommand(AddIssues); }
+            get { return new DelegateCommand(AddIssuesAsync); }
         }
 
-        private void AddIssues() //Add issues by selected volume
+        public void AddIssuesAsync()
+        {
+            Task<bool> t = Task<bool>.Factory.StartNew(() => AddIssues());
+        }
+
+        private bool AddIssues() //Add issues by selected volume
         {
             List<Issue> skeletonIssues = webDataService.GetIssuesFromVolume(SelectedVolume);
             foreach (Issue iss in skeletonIssues)
             {
                 if (!repository.IssueExists(iss.id))
                 {
+                    PrintMessage("Getting Issue - " + iss.name + "...");
+                    NotifyPropertyChanged("Messages", 0);
                     Issue issue = webDataService.GetIssue(iss.id);
                     repository.Save(issue);
                 }
             }
             Issues = new ObservableCollection<Issue>(repository.GetIssues(SelectedVolume));
             NotifyPropertyChanged("Issues", 0);
+            return true;
         }
 
         public ICommand FindIssuesCommand
@@ -161,7 +178,8 @@ namespace ComicHoarder.ViewModels
 
         private void PrintMessage(string message)
         {
-            Messages = Messages + "/n" + message;
+            Messages = Messages + "\n" + message;
         }
+
     }
 }

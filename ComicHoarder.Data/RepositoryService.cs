@@ -131,9 +131,9 @@ namespace ComicHoarder.Repository
             return repository.UpdateIssueToCollected(id);
         }
 
-        public string GetWebServiceKey(string name)
+        public string GetSetting(string name)
         {
-            return repository.GetWebServiceKey(name);
+            return repository.GetSetting(name);
         }
 
         public PieChartMissingIssueRatio GetPieChartData(int publisherId)

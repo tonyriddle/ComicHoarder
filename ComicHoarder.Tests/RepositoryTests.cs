@@ -136,6 +136,13 @@ namespace ComicHoarder.Tests
             Assert.IsTrue(ratios.MissingIssueRatioList[1].Key == "Missing");
             Assert.IsTrue(ratios.MissingIssueRatioList[1].Value == 4);
         }
+
+        [TestMethod]
+        public void CanGetSettings()
+        {
+            string key = repository.GetSetting("ComicVineKey");
+            Assert.IsTrue(key.StartsWith("c562"));
+        }
         //TODO Complete Repository Tests
 
 

@@ -15,16 +15,22 @@ namespace ComicHoarder.ViewModels
         int selectedPublisher = 0;
         public ObservableCollection<Publisher> Publishers { get; set; }
         public int SelectedPublisher { 
-            get { return selectedPublisher; } 
-            set { selectedPublisher = Publishers[value].id; 
-                NotifyPropertyChanged("Publishers", value); } 
+            get { return selectedPublisher; }
+            set
+            {
+                if (value != -1 && value != 0)
+                {
+                    selectedPublisher = value;
+                    NotifyPropertyChanged("Publishers", value);
+                }
+            } 
         }
         public string SearchText { get; set; }
 
         public PublisherSearchViewModel()
         {
-            webDataService = new WebDataService("UseComicVineScraperKey");
             repository = new RepositoryService();
+            webDataService = new WebDataService(repository.GetSetting("ComicVineKey"));
             Publishers = new ObservableCollection<Publisher>();
         }
     }
