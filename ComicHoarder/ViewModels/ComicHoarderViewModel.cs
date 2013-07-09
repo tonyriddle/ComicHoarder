@@ -4,10 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using ComicHoarder.Common;
-using System.Windows.Input;
-using System.Windows;
+//using System.Windows;
 using ComicHoarder.Repository;
 using ComicHoarder.WebData;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace ComicHoarder.ViewModels
 {
@@ -25,10 +26,12 @@ namespace ComicHoarder.ViewModels
             {
                 selectedPublisher = Publishers[value].id;
                 Task<ObservableCollection<Volume>> t = Task<ObservableCollection<Volume>>.Factory.StartNew(() => ReloadVolumesAsync(Publishers[value].id));
+                Task<ObservableCollection<KeyValuePair<string, int>>> c = Task<ObservableCollection<KeyValuePair<string, int>>>.Factory.StartNew(() => ReloadPieChart(Publishers[value].id));
                 Volumes.Clear();
                 Volumes = t.Result;
+                PieChartRatios = c.Result;
                 //todo update missingissues and piechartratios
-                NotifyPropertyChanged("Publisher", value);
+                NotifyPropertyChanged("Publishers", value);
                 NotifyPropertyChanged("Volumes", value);
                 NotifyPropertyChanged("MissingIssues", value);
                 NotifyPropertyChanged("PieChartRatios", value);
@@ -108,7 +111,7 @@ namespace ComicHoarder.ViewModels
         public ComicHoarderViewModel()
         {
             repository = new RepositoryService();
-            webDataService = new WebDataService("UseComicVineScraperKey");
+            webDataService = new WebDataService(repository.GetSetting("ComicVineKey"));
 
             Publishers = new ObservableCollection<Publisher>(repository.GetPublishers());
             if (Publishers.Count() > 0) 
@@ -134,7 +137,7 @@ namespace ComicHoarder.ViewModels
                 Issues = new ObservableCollection<Issue>(repository.GetIssues(selectedVolume));
                 if (Issues.Count() > 0)
                 {
-                    SelectedIssue = Issues[0].id;
+                    selectedIssue = Issues[0].id;
                 }
             }
             else
@@ -144,14 +147,8 @@ namespace ComicHoarder.ViewModels
 
             MissingIssues = new ObservableCollection<MissingIssue>(repository.GetMissingIssues(selectedPublisher));
 
-            PieChartRatios = new ObservableCollection<KeyValuePair<string, int>>();
-            PieChartMissingIssueRatio ratios = repository.GetPieChartData(SelectedPublisher);
-            foreach (KeyValuePair<string, int> ratio in ratios.MissingIssueRatioList)
-            {
-                PieChartRatios.Add(ratio);
-            }
+            PieChartRatios = ReloadPieChart(SelectedPublisher);
 
-            //TODO replace with db call
             BarChartRatios = new ObservableCollection<KeyValuePair<string, int>>();
             List<int> publisherIds = (from p in Publishers
                                         where p.enabled == true
@@ -169,5 +166,17 @@ namespace ComicHoarder.ViewModels
             //TODO move default path to config file
             Path = @"D:\Incoming\";
         }
+
+        private ObservableCollection<KeyValuePair<string, int>> ReloadPieChart(int publisherId)
+        {
+            var pieChartRatios = new ObservableCollection<KeyValuePair<string, int>>();
+            PieChartMissingIssueRatio ratios = repository.GetPieChartData(publisherId);
+            foreach (KeyValuePair<string, int> ratio in ratios.MissingIssueRatioList)
+            {
+                pieChartRatios.Add(ratio);
+            }
+            return pieChartRatios;
+        }
+
     }
 }

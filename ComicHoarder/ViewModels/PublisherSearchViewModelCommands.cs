@@ -24,6 +24,10 @@ namespace ComicHoarder.ViewModels
             {
                 List<Publisher> publishers = webDataService.SearchPublishers(SearchText);
                 Publishers = new ObservableCollection<Publisher>(publishers);
+                if (Publishers.Count() > 0)
+                {
+                    NotifyPropertyChanged("Publishers", Publishers[0].id);
+                }
             }
         }
 
@@ -40,6 +44,7 @@ namespace ComicHoarder.ViewModels
                                                where p.id == SelectedPublisher
                                                select p).FirstOrDefault();
                 repository.Save(selectedPublisher);
+                NotifyPropertyChanged("Publishers", selectedPublisher.id); 
             }
         }
 

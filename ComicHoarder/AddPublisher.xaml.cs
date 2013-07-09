@@ -20,8 +20,6 @@ namespace ComicHoarder
     /// </summary>
     public partial class AddPublisher : Window
     {
-        public event EventHandler PublishersChanged;
-
         public AddPublisher()
         {
             InitializeComponent();

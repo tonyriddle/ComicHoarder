@@ -17,18 +17,21 @@ namespace ComicHoarder.EComic
             ComicInfo info = ConvertToCRInfo(xml);
             Issue issue = new Issue();
             
-            string id = GetCVIDFromNotes(info.Notes);
-            int issueId = 0;
-            int.TryParse(id, out issueId);
-            issue.id = issueId;
-            issue.volumeId = 0; //TODO can possibly pull from db if already there using issueid - or pull from cv using series and volume
-            issue.name = info.Title;
-            issue.issueNumber = ParseHelper.ParseInt(info.Number);
-            issue.publishMonth = ParseHelper.ParseInt(info.Month);
-            issue.publishYear = ParseHelper.ParseInt(info.Year);
-            issue.collected = true;
-            issue.enabled = true;
-            issue.summary = info.Summary;
+            if (info.Notes != null)
+            {
+                string id = GetCVIDFromNotes(info.Notes);
+                int issueId = 0;
+                int.TryParse(id, out issueId);
+                issue.id = issueId;
+                issue.volumeId = 0; //TODO can possibly pull from db if already there using issueid - or pull from cv using series and volume
+                issue.name = info.Title;
+                issue.issueNumber = ParseHelper.ParseInt(info.Number);
+                issue.publishMonth = ParseHelper.ParseInt(info.Month);
+                issue.publishYear = ParseHelper.ParseInt(info.Year);
+                issue.collected = true;
+                issue.enabled = true;
+                issue.summary = info.Summary;
+            }
             return issue;
         }
 

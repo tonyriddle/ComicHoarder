@@ -63,7 +63,7 @@ namespace ComicHoarder.WebData
             volume.id = ParseHelper.ParseInt(response.results[0].id);
             volume.publisherId = ParseHelper.ParseInt(response.results[0].publisher[0].id);
             volume.name = response.results[0].name;
-            volume.description = response.results[0].deck;
+            volume.description = response.results[0].description;
             volume.dateAdded = ParseHelper.ParseDateTime(response.results[0].date_added);
             volume.dateLastUpdated = ParseHelper.ParseDateTime(response.results[0].date_last_updated);
             volume.collectable = true;
@@ -129,21 +129,24 @@ namespace ComicHoarder.WebData
         {
             CVQueryVolume.response response = ConvertToVolumeResponse(xml);
             List<Issue> issues = new List<Issue>();
-            foreach (ComicHoarder.WebData.CVQueryVolume.responseResultsIssuesIssue comicvineissue in response.results[0].issues[0].issue)
+            if (response.results[0].issues != null)
             {
-                Issue issue = new Issue();
-                issue.id = ParseHelper.ParseInt(comicvineissue.id);
-                issue.name = comicvineissue.name;
-                if (comicvineissue.issue_number.Contains("au"))
+                foreach (ComicHoarder.WebData.CVQueryVolume.responseResultsIssuesIssue comicvineissue in response.results[0].issues[0].issue)
                 {
-                    int n = 0;
-                    int.TryParse(new string(comicvineissue.issue_number.Where(a => Char.IsDigit(a)).ToArray()), out n);
-                    issue.issueNumber = ParseHelper.ParseFloat(n.ToString());
-                    issue.issueNumber = issue.issueNumber + .1f;
-                }
+                    Issue issue = new Issue();
+                    issue.id = ParseHelper.ParseInt(comicvineissue.id);
+                    issue.name = comicvineissue.name;
+                    if (comicvineissue.issue_number.Contains("au"))
+                    {
+                        int n = 0;
+                        int.TryParse(new string(comicvineissue.issue_number.Where(a => Char.IsDigit(a)).ToArray()), out n);
+                        issue.issueNumber = ParseHelper.ParseFloat(n.ToString());
+                        issue.issueNumber = issue.issueNumber + .1f;
+                    }
 
-                issue.issueNumber = ParseHelper.ParseFloat(comicvineissue.issue_number);
-                issues.Add(issue);
+                    issue.issueNumber = ParseHelper.ParseFloat(comicvineissue.issue_number);
+                    issues.Add(issue);
+                }
             }
             return issues;
         }

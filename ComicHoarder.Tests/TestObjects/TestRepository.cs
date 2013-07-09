@@ -225,7 +225,7 @@ namespace ComicHoarder.Tests
         }
 
 
-        public string GetWebServiceKey(string name)
+        public string GetSetting(string name)
         {
             return "12345678";
         }

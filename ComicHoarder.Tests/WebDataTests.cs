@@ -37,7 +37,7 @@ namespace ComicHoarder.Tests
                 connection = new TestWebConnection();
             }
 
-            key = repository.GetWebServiceKey("WebServiceKey");
+            key = repository.GetSetting("WebServiceKey");
 
             converter = new ComicVineConverter();
             urlBuilder = new ComicVineURLBuilder(key);

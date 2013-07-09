@@ -45,5 +45,16 @@ namespace ComicHoarder.EComic
             }
             return filePaths.ToList<string>();
         }
+
+        public List<Issue> GetIssues(string pathname, bool searchSubDirectory)
+        {
+            List<Issue> issues = new List<Issue>();
+            List<string> fileNames = FindIssuesInPath(pathname, searchSubDirectory);
+            foreach (string filename in fileNames)
+            {
+                issues.Add(GetComicInfo(filename));
+            }
+            return issues;
+        }
     }
 }
