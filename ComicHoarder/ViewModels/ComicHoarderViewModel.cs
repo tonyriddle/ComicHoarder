@@ -29,10 +29,12 @@ namespace ComicHoarder.ViewModels
                 Task<ObservableCollection<KeyValuePair<string, int>>> c = Task<ObservableCollection<KeyValuePair<string, int>>>.Factory.StartNew(() => ReloadPieChart(Publishers[value].id));
                 Volumes.Clear();
                 Volumes = t.Result;
+                Issues.Clear();
+                MissingIssues.Clear();
                 PieChartRatios = c.Result;
-                //todo update missingissues and piechartratios
                 NotifyPropertyChanged("Publishers", value);
                 NotifyPropertyChanged("Volumes", value);
+                NotifyPropertyChanged("Issues", value);
                 NotifyPropertyChanged("MissingIssues", value);
                 NotifyPropertyChanged("PieChartRatios", value);
             }
@@ -158,11 +160,6 @@ namespace ComicHoarder.ViewModels
             {
                 BarChartRatios.Add(barratio);
             }
-
-            //TODO remove this and put messages in each command
-            Messages = "First Message";
-            Messages = Messages + "\n" + "Second Message";
-
             //TODO move default path to config file
             Path = @"D:\Incoming\";
         }
