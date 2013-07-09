@@ -1,4 +1,5 @@
 ﻿using ComicHoarder.Common;
+using ComicHoarder.EComic;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -60,12 +61,16 @@ namespace ComicHoarder.ViewModels
 
         private bool AddVolumes() //Adds volumes based on selected publisher
         {
+            int total = 0;
+            int count = 0;
             List<Volume> skeletonVolumes = webDataService.GetVolumesFromPublisher(SelectedPublisher);
+            total = skeletonVolumes.Count();
             foreach (Volume vol in skeletonVolumes)
             {
+                count++;
                 if (!repository.VolumeExists(vol.id))
                 {
-                    PrintMessage("Getting Volume - " + vol.name + "...");
+                    PrintMessage("Getting Volume " + count + " of " + total + " - " + vol.name + "...");
                     NotifyPropertyChanged("Messages", 0);
                     Volume volume = webDataService.GetVolume(vol.id);
                     repository.Save(volume);
@@ -88,12 +93,16 @@ namespace ComicHoarder.ViewModels
 
         private bool AddIssues() //Add issues by selected volume
         {
+            int total = 0;
+            int count = 0;
             List<Issue> skeletonIssues = webDataService.GetIssuesFromVolume(SelectedVolume);
+            total = skeletonIssues.Count();
             foreach (Issue iss in skeletonIssues)
             {
+                count++;
                 if (!repository.IssueExists(iss.id))
                 {
-                    PrintMessage("Getting Issue - " + iss.name + "...");
+                    PrintMessage("Getting Issue " + count + " of " + total + " - " + iss.name + "...");
                     NotifyPropertyChanged("Messages", 0);
                     Issue issue = webDataService.GetIssue(iss.id);
                     repository.Save(issue);
@@ -106,23 +115,39 @@ namespace ComicHoarder.ViewModels
 
         public ICommand FindIssuesCommand
         {
-            get { return new DelegateCommand(FindIssues); }
+            get { return new DelegateCommand(FindIssuesAsync); }
         }
 
-        private void FindIssues() //Find any issues by selected publisher
+        private void FindIssuesAsync()
         {
+            Task<bool> t = Task<bool>.Factory.StartNew(() => FindIssues());
+        }
+
+        private bool FindIssues() //Find any issues by selected publisher
+        {
+            int total = 0;
+            int count = 0;
+            int totalv = 0;
+            int countv = 0;
             List<Volume> skeletonVolumes = webDataService.GetVolumesFromPublisher(SelectedPublisher);
+            totalv = skeletonVolumes.Count();
             foreach (Volume vol in skeletonVolumes)
             {
+                countv++;
                 if (!repository.VolumeExists(vol.id)) //if volume does not exist, then get and save
                 {
                     repository.Save(webDataService.GetVolume(vol.id));
                 }
                 List<Issue> skeletonIssues = webDataService.GetIssuesFromVolume(vol.id);
+                total = skeletonIssues.Count();
+                count = 0;
                 foreach (Issue iss in skeletonIssues)
                 {
+                    count++;
                     if (!repository.IssueExists(iss.id))
                     {
+                        PrintMessage("Getting Volume " + countv + " of " + totalv + ", Issue " + count + " of " + total + " - " + iss.name + "...");
+                        NotifyPropertyChanged("Messages", 0);
                         Issue issue = webDataService.GetIssue(iss.id);
                         repository.Save(issue);
                     }
@@ -130,6 +155,7 @@ namespace ComicHoarder.ViewModels
             }
             Issues = new ObservableCollection<Issue>(repository.GetIssues(SelectedVolume));
             NotifyPropertyChanged("Issues", 0);
+            return true;
         }
 
         public ICommand BrowseMissingIssuesCommand
@@ -155,11 +181,19 @@ namespace ComicHoarder.ViewModels
 
         private void CollectMissingIssues()
         {
-            //implement collect (update do collected) missing issues - including adding issues - volumes - publishers if necessary
-            MessageBox.Show("Collecting MissingIssues");
-            int p = selectedMissingIssue;
-            int myCount = MissingIssues.Count();
-            string SomeText = String.Empty;
+            IEComicService eComicService = new EComicService();
+            List<Issue> issues = eComicService.GetIssues(Path, true);
+            int count = 0;
+            foreach(Issue issue in issues)
+            {
+                count++;
+                repository.UpdateIssueToCollected(issue.id);
+                PrintMessage("Updating Issue " + count + " of " + issues.Count() + " - " + issue.name + "...");
+                NotifyPropertyChanged("Messages", 0);
+            }
+            PrintMessage("Updating Issues Complete.");
+            NotifyPropertyChanged("Messages", 0);
+
         }
 
         public ICommand ExportMissingIssuesCommand
