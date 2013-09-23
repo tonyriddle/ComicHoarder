@@ -176,10 +176,15 @@ namespace ComicHoarder.ViewModels
 
         public ICommand CollectMissingIssuesCommand
         {
-            get { return new DelegateCommand(CollectMissingIssues); }
+            get { return new DelegateCommand(CollectMissingIssuesAsync); }
         }
 
-        private void CollectMissingIssues()
+        private void CollectMissingIssuesAsync()
+        {
+            Task<bool> t = Task<bool>.Factory.StartNew(() => CollectMissingIssues());
+        }
+
+        private bool CollectMissingIssues()
         {
             IEComicService eComicService = new EComicService();
             List<Issue> issues = eComicService.GetIssues(Path, true);
@@ -187,13 +192,19 @@ namespace ComicHoarder.ViewModels
             foreach(Issue issue in issues)
             {
                 count++;
-                repository.UpdateIssueToCollected(issue.id);
-                PrintMessage("Updating Issue " + count + " of " + issues.Count() + " - " + issue.name + "...");
+                if (repository.UpdateIssueToCollected(issue.id))
+                {
+                    PrintMessage("Updating Issue " + count + " of " + issues.Count() + " - " + issue.name + "...");
+                }
+                else
+                {
+                    PrintMessage("Issue does not exist: " + issue.name + " issue: " + issue.issueNumber + " id: " + issue.id);
+                }
                 NotifyPropertyChanged("Messages", 0);
             }
             PrintMessage("Updating Issues Complete.");
             NotifyPropertyChanged("Messages", 0);
-
+            return true;
         }
 
         public ICommand ExportMissingIssuesCommand

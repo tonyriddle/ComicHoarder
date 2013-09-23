@@ -800,7 +800,7 @@ namespace ComicHoarder
             {
                 int issueCount = 0;
                 int missingIssueCount = 0;
-                SqlCommand command = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 1", con);
+                SqlCommand command = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and v.collectable = 1 and i.collected = 1", con);
                 command.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter ad = new SqlDataAdapter(command);
                 DataSet ds = new DataSet("issueCount");
@@ -812,7 +812,7 @@ namespace ComicHoarder
                     Int32.TryParse(strIssueCount, out issueCount);
                 }
 
-                SqlCommand missingCommand = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and i.collected = 0", con);
+                SqlCommand missingCommand = new SqlCommand("select count(i.id) as count from issue i join volume v on i.volume_id = v.id join publisher p on p.id = v.publisher_id where p.id = @id and v.collectable = 1 and i.collected = 0", con);
                 missingCommand.Parameters.Add("@id", SqlDbType.Int).Value = publisherId;
                 SqlDataAdapter missingad = new SqlDataAdapter(missingCommand);
                 DataSet missingds = new DataSet("issueMissingCount");
