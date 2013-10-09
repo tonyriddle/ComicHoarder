@@ -31,7 +31,9 @@ namespace ComicHoarder.ViewModels
                 Volumes = t.Result;
                 Issues.Clear();
                 MissingIssues.Clear();
+
                 MissingIssues = new ObservableCollection<MissingIssue>(repository.GetMissingIssues(selectedPublisher));
+
                 PieChartRatios = c.Result;
                 NotifyPropertyChanged("Publishers", value);
                 NotifyPropertyChanged("Volumes", value);
