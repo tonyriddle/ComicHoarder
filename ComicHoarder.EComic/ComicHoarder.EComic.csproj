@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComicInfoConverter.cs" />
-    <Compile Include="ComicInfo.cs" />
     <Compile Include="EComicService.cs" />
+    <Compile Include="EComicXMLDataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ZipController.cs" />
   </ItemGroup>

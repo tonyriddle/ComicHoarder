@@ -10,18 +10,18 @@ namespace ComicHoarder.EComic
 {
     public class EComicService : IEComicService
     {
-        IEComicConverter converter;
+        IEComicDataReader dataReader;
         ICompressionController compressionController;
 
         public EComicService()
         {
-            converter = new ComicInfoConverter();
+            dataReader = new EComicXMLDataReader();
             compressionController = new ZipController();
         }
 
-        public EComicService(IEComicConverter converter, ICompressionController compressionController)
+        public EComicService(EComicXMLDataReader dataReader, ICompressionController compressionController)
         {
-            this.converter = converter;
+            this.dataReader = dataReader;
             this.compressionController = compressionController;
         }
 
@@ -29,7 +29,7 @@ namespace ComicHoarder.EComic
         {
             compressionController.SetFileName(filename);
             string data = compressionController.ExtractTextFile("ComicInfo.xml");
-            return converter.ConvertToIssue(data);
+            return dataReader.ReadIssueData(data);
         }
 
         public List<string> FindIssuesInPath(string pathName, bool searchSubDirectory)

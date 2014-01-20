@@ -16,7 +16,21 @@ namespace ComicHoarder.Tests
         string TestPath = @"../../../Documentation/";
         string TestComicInfoFileName = @"ComicInfo.xml";
         string TestImageFileName = @"P00001.jpg";
-        
+
+        [TestMethod]
+        public void CanReadXMLIssueDataFromEComic()
+        {
+            EComicXMLDataReader reader = new EComicXMLDataReader();
+            string comicInfo = File.ReadAllText(TestXMLCRComicInfoFileName);
+            Issue issue = reader.ReadIssueData(comicInfo);
+            Assert.IsTrue(issue.id == 9383);
+            Assert.IsTrue(issue.name == "Bugs the Squids");
+            Assert.IsTrue(issue.summary.StartsWith("The Squid Gang crash the party"));
+            Assert.IsTrue(issue.issueNumber == 1);
+            Assert.IsTrue(issue.publishMonth == 6);
+            Assert.IsTrue(issue.publishYear == 1967);
+        }
+
         [TestMethod]
         public void CanReadXMLFromCbz()
         {
@@ -41,39 +55,14 @@ namespace ComicHoarder.Tests
             Assert.IsTrue(image.Height == 1291);
         }
 
-        [TestMethod]
-        public void CanDeserializeToCRComicInfo()
-        {
-            string result = "";
-            using (StreamReader sr = new StreamReader(TestXMLCRComicInfoFileName))
-            {
-                result = sr.ReadToEnd();
-            }
-            ComicInfoConverter converter = new ComicInfoConverter();
-            ComicInfo info = converter.ConvertToCRInfo(result);
-            Assert.IsTrue(info.Title == "Bugs the Squids");
-        }
 
         [TestMethod]
         public void CanExtractCVIDFromComicInfoNotes()
         {
             string notes = "Scraped metadata from ComicVine [CVDB9383] on 2013.06.03 23:14:42.";
-            ComicInfoConverter converter = new ComicInfoConverter();
-            string id = converter.GetCVIDFromNotes(notes);
+            EComicXMLDataReader dataReader = new EComicXMLDataReader();
+            string id = dataReader.GetCVIDFromNotes(notes);
             Assert.IsTrue(id == "9383");
-        }
-
-        [TestMethod]
-        public void CanConvertComicInfoToIssue()
-        {
-            string result = "";
-            using (StreamReader sr = new StreamReader(TestXMLCRComicInfoFileName))
-            {
-                result = sr.ReadToEnd();
-            }
-            ComicInfoConverter converter = new ComicInfoConverter();
-            Issue issue = converter.ConvertToIssue(result);
-            Assert.IsTrue(issue.name == "Bugs the Squids");            
         }
 
         [TestMethod]
@@ -81,7 +70,12 @@ namespace ComicHoarder.Tests
         {
             EComicService eComicService = new EComicService();
             Issue issue = eComicService.GetComicInfo(TestCBZComicFileName);
+            Assert.IsTrue(issue.id == 9383);
             Assert.IsTrue(issue.name == "Bugs the Squids");
+            Assert.IsTrue(issue.summary.StartsWith("The Squid Gang crash the party"));
+            Assert.IsTrue(issue.issueNumber == 1);
+            Assert.IsTrue(issue.publishMonth == 6);
+            Assert.IsTrue(issue.publishYear == 1967);
         }
 
         [TestMethod]

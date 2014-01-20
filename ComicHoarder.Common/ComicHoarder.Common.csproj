@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IComicVineReprintDetector.cs" />
-    <Compile Include="Interfaces\IEComicConverter.cs" />
+    <Compile Include="Interfaces\IEComicDataReader.cs" />
     <Compile Include="Interfaces\IWebConnection.cs" />
     <Compile Include="Interfaces\IURLBuilder.cs" />
     <Compile Include="Interfaces\IWebDataReader.cs" />
