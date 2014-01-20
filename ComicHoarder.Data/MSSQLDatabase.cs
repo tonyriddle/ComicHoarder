@@ -212,13 +212,14 @@ namespace ComicHoarder
             {
                 con.Open();
                 string sql = "insert into issue "
-                        + "(id, volume_id, name, issue_number, publish_month, publish_year, collected, enabled) "
-                        + "values (@id, @volume_id, @name, @issue_number, @publish_month, @publish_year, @collected, @enabled)";
+                        + "(id, volume_id, name, issue_number, issue_number_suffix, publish_month, publish_year, collected, enabled) "
+                        + "values (@id, @volume_id, @name, @issue_number, @issue_number_suffix, @publish_month, @publish_year, @collected, @enabled)";
                 SqlCommand command = new SqlCommand(sql, con);
                 command.Parameters.AddWithValue("@id", issue.id);
                 command.Parameters.AddWithValue("@volume_id", issue.volumeId);
                 command.Parameters.AddWithValue("@name", TruncateString(issue.name, 100));
                 command.Parameters.AddWithValue("@issue_number", issue.issueNumber);
+                command.Parameters.AddWithValue("@issue_number_suffix", issue.issueNumberSuffix);
                 command.Parameters.AddWithValue("@publish_month", issue.publishMonth);
                 command.Parameters.AddWithValue("@publish_year", issue.publishYear);
                 command.Parameters.AddWithValue("@collected", issue.collected);
@@ -366,12 +367,13 @@ namespace ComicHoarder
             using (SqlConnection con = new SqlConnection(constring))
             {
                 con.Open();
-                string sql = "update issue set volume_id = @volume_id, name = @name, issue_number = @issue_number, publish_month = @publish_month, publish_year = @publish_year, enabled = @enabled where id = @id";
+                string sql = "update issue set volume_id = @volume_id, name = @name, issue_number = @issue_number, issue_number_suffix = @issue_number_suffix, publish_month = @publish_month, publish_year = @publish_year, enabled = @enabled where id = @id";
                 SqlCommand command = new SqlCommand(sql, con);
                 command.Parameters.AddWithValue("@id", issue.id);
                 command.Parameters.AddWithValue("@volume_id", issue.volumeId);
                 command.Parameters.AddWithValue("@name", TruncateString(issue.name, 100));
                 command.Parameters.AddWithValue("@issue_number", issue.issueNumber);
+                command.Parameters.AddWithValue("@issue_number_suffix", issue.issueNumberSuffix);
                 command.Parameters.AddWithValue("@publish_month", issue.publishMonth);
                 command.Parameters.AddWithValue("@publish_year", issue.publishYear);
                 //command.Parameters.AddWithValue("@collected", issue.collected); Don't want to update collected values
@@ -682,15 +684,15 @@ namespace ComicHoarder
             {
                 MissingIssue issue = new MissingIssue();
                 issue.id = ParseHelper.ParseInt(row["id"].ToString());
-                issue.volume_id = ParseHelper.ParseInt(row["volume_id"].ToString());
+                issue.volumeId = ParseHelper.ParseInt(row["volume_id"].ToString());
                 issue.name = row["name"].ToString();
-                issue.issue_number = ParseHelper.ParseFloat(row["issue_number"].ToString());
-                issue.publish_month = ParseHelper.ParseInt(row["publish_month"].ToString());
-                issue.publish_year = ParseHelper.ParseInt(row["publish_year"].ToString());
+                issue.issueNumber = ParseHelper.ParseFloat(row["issue_number"].ToString());
+                issue.publishMonth = ParseHelper.ParseInt(row["publish_month"].ToString());
+                issue.publishYear = ParseHelper.ParseInt(row["publish_year"].ToString());
                 issue.collected = ParseHelper.ParseBool(row["collected"].ToString());
                 issue.enabled = ParseHelper.ParseBool(row["enabled"].ToString());
-                issue.volume_name = row["volume_name"].ToString();
-                issue.publisher_name = row["publisher_name"].ToString();
+                issue.volumeName = row["volume_name"].ToString();
+                issue.publisherName = row["publisher_name"].ToString();
                 issues.Add(issue);
             }
             return issues;

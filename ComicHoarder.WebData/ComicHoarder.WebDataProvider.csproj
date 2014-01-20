@@ -39,15 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComicVineJSONReader.cs" />
     <Compile Include="ComicVineReprintDetector.cs" />
     <Compile Include="ComicVineWebConnection.cs" />
     <Compile Include="ComicVineURLBuilder.cs" />
     <Compile Include="ComicVineXMLReader.cs" />
-    <Compile Include="Models\CVQuery.Issue.cs" />
-    <Compile Include="Models\CVQuery.Publisher.cs" />
-    <Compile Include="Models\CVQuery.Volume.cs" />
-    <Compile Include="Models\CVSearch.Publisher.cs" />
-    <Compile Include="ComicVineConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDataService.cs" />
   </ItemGroup>

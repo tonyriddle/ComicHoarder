@@ -76,19 +76,19 @@ namespace ComicHoarder.Tests
                 {
                     id = -1,
                     name = "Bugs the Squids",
-                    volume_name = "Blue Beetle"
+                    volumeName = "Blue Beetle"
                 },
                 new MissingIssue
                 {
                     id = -2,
                     name = "To the Moon",
-                    volume_name = "Captain Marvel"
+                    volumeName = "Captain Marvel"
                 },
                 new MissingIssue
                 {
                     id = -3,
                     name = "Horses, Horses, Horses",
-                    volume_name = "The Phantom"
+                    volumeName = "The Phantom"
                 }
             };
         }
@@ -227,7 +227,7 @@ namespace ComicHoarder.Tests
 
         public string GetSetting(string name)
         {
-            return "12345678";
+            return "c5625678";
         }
 
 

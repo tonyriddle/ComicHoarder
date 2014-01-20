@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<response>
+  <error><![CDATA[OK]]></error>
+  <limit>1</limit>
+  <offset>0</offset>
+  <number_of_page_results>1</number_of_page_results>
+  <number_of_total_results>1</number_of_total_results>
+  <status_code>1</status_code>
+  <results>
+    <cover_date><![CDATA[2007-06-01]]></cover_date>
+    <id>187507</id>
+    <issue_number>4au</issue_number>
+    <name/>
+    <volume>
+      <api_detail_url><![CDATA[http://www.comicvine.com/api/volume/4050-30439/]]></api_detail_url>
+      <id>30439</id>
+      <name><![CDATA[Squadron Supreme: Hyperion vs. Nighthawk]]></name>
+      <site_detail_url><![CDATA[http://www.comicvine.com/squadron-supreme-hyperion-vs-nighthawk/4050-30439/]]></site_detail_url>
+    </volume>
+  </results>
+  <version>1.0</version>
+</response>

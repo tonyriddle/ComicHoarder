@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		Documentation\comicvineapi.txt = Documentation\comicvineapi.txt
 		Documentation\Creating Classes from ComicVine XML.docx = Documentation\Creating Classes from ComicVine XML.docx
 		Documentation\issue.xml = Documentation\issue.xml
+		Documentation\issuewithsuffix.xml = Documentation\issuewithsuffix.xml
 		Documentation\PublisherFiltered.xml = Documentation\PublisherFiltered.xml
 		Documentation\publishersearch.xml = Documentation\publishersearch.xml
 		Documentation\PublisherUnfiltered.xml = Documentation\PublisherUnfiltered.xml

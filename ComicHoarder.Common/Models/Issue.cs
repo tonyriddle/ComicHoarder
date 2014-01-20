@@ -12,6 +12,7 @@ namespace ComicHoarder.Common
         public int volumeId { get; set; }
         public string name { get; set; }
         public float issueNumber { get; set; }
+        public string issueNumberSuffix { get; set; }
         public int publishMonth { get; set; }
         public int publishYear { get; set; }
         public bool collected { get; set; }
