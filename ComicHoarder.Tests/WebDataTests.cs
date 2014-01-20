@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
 using ComicHoarder.Common;
-using ComicHoarder.WebData;
+using ComicHoarder.WebDataProvider;
 
 namespace ComicHoarder.Tests
 {
@@ -57,7 +57,7 @@ namespace ComicHoarder.Tests
                 result = sr.ReadToEnd();
             }
             ComicVineConverter converter = new ComicVineConverter();
-            WebData.CVQueryPublisher.response response = converter.ConvertToPublisherResponse(result);
+            WebDataProvider.CVQueryPublisher.response response = converter.ConvertToPublisherResponse(result);
             Assert.IsTrue(response.results[0].id == "125");
         }
 
@@ -151,7 +151,7 @@ namespace ComicHoarder.Tests
                 result = sr.ReadToEnd();
             }
             ComicVineConverter converter = new ComicVineConverter();
-            WebData.CVQueryVolume.response response = converter.ConvertToVolumeResponse(result);
+            WebDataProvider.CVQueryVolume.response response = converter.ConvertToVolumeResponse(result);
             Assert.IsTrue(response.results[0].id == "2189");
         }
 
@@ -213,8 +213,46 @@ namespace ComicHoarder.Tests
                 result = sr.ReadToEnd();
             }
             ComicVineConverter converter = new ComicVineConverter();
-            WebData.CVQueryIssue.response response = converter.ConvertToIssueResponse(result);
+            WebDataProvider.CVQueryIssue.response response = converter.ConvertToIssueResponse(result);
             Assert.IsTrue(response.results[0].id == "187507");
+        }
+
+        [TestMethod]
+        public void CanReadComicVineXMLToIssue()
+        {
+            var result = File.ReadAllText(TestXMLComicVineIssueUnFilteredFileName);
+            var cvXMLReader = new ComicVineXMLReader();
+            var issue = cvXMLReader.GetIssue(result);
+            Assert.IsTrue(issue.id == 187507);
+            Assert.IsTrue(issue.issueNumber == 4);
+            Assert.IsTrue(issue.name == "");
+            Assert.IsTrue(issue.volumeId == 30439);
+        }
+
+        [TestMethod]
+        public void CanReadComicVineXMLToVolume()
+        {
+            var result = File.ReadAllText(TestXMLComicVineVolumeUnFilteredFileName);
+            var cvXMLReader = new ComicVineXMLReader();
+            var volume = cvXMLReader.GetVolume(result);
+            Assert.AreEqual(volume.id, 2189);
+            Assert.AreEqual(volume.name, "The Amazing Spider-Man Annual");
+            Assert.AreEqual(volume.countOfIssues, 39);
+            Assert.IsFalse(volume.complete);
+            Assert.AreEqual(volume.publisherId, 31);
+            Assert.AreEqual(volume.startYear, 1964);
+        }
+
+        [TestMethod]
+        public void CanReadComicVineXMLToPublisher()
+        {
+            var result = File.ReadAllText(TestXMLComicVinePublisherFilteredFileName);
+            var cvXMLReader = new ComicVineXMLReader();
+            var publisher = cvXMLReader.GetPublisher(result);
+            Assert.AreEqual(publisher.id, 125);
+            Assert.AreEqual(publisher.name, "Charlton");
+            Assert.IsTrue(publisher.enabled = true);
+            Assert.AreEqual(publisher.description, "");
         }
 
         [TestMethod]

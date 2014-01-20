@@ -7,7 +7,7 @@ using ComicHoarder.Common;
 using System.IO;
 using System.Net;
 
-namespace ComicHoarder.WebData
+namespace ComicHoarder.WebDataProvider
 {
     public class ComicVineWebConnection : IWebConnection
     {

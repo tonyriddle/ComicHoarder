@@ -1,6 +1,6 @@
 ﻿using ComicHoarder.Common;
 using ComicHoarder.Repository;
-using ComicHoarder.WebData;
+using ComicHoarder.WebDataProvider;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;

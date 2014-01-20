@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ComicHoarder.Common;
 
-namespace ComicHoarder.WebData
+namespace ComicHoarder.WebDataProvider
 {
     public class ComicVineReprintDetector : IComicVineReprintDetector
     {

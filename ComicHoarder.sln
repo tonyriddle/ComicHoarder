@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.Repository", "ComicHoarder.Data\ComicHoarder.Repository.csproj", "{0938C34C-65B8-421C-9611-F1C4AE13CF87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.WebData", "ComicHoarder.WebData\ComicHoarder.WebData.csproj", "{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.WebDataProvider", "ComicHoarder.WebData\ComicHoarder.WebDataProvider.csproj", "{EFCA2F77-BEAA-48AA-80CA-7B1AD732E2D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicHoarder.EComic", "ComicHoarder.EComic\ComicHoarder.EComic.csproj", "{004F1B20-7AEA-4F7A-994A-71350FEC769C}"
 EndProject

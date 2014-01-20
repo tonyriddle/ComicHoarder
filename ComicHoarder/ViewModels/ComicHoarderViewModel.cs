@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ComicHoarder.Common;
 //using System.Windows;
 using ComicHoarder.Repository;
-using ComicHoarder.WebData;
+using ComicHoarder.WebDataProvider;
 using System.Windows.Forms;
 using System.Windows.Input;
 

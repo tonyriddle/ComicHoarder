@@ -71,9 +71,9 @@
       <Project>{004f1b20-7aea-4f7a-994a-71350fec769c}</Project>
       <Name>ComicHoarder.EComic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComicHoarder.WebData\ComicHoarder.WebData.csproj">
+    <ProjectReference Include="..\ComicHoarder.WebData\ComicHoarder.WebDataProvider.csproj">
       <Project>{efca2f77-beaa-48aa-80ca-7b1ad732e2d8}</Project>
-      <Name>ComicHoarder.WebData</Name>
+      <Name>ComicHoarder.WebDataProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

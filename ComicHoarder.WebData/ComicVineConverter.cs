@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 using System.IO;
 using ComicHoarder.Common;
 
-namespace ComicHoarder.WebData
+namespace ComicHoarder.WebDataProvider
 {
     public class ComicVineConverter : IWebDataConverter
     {
@@ -98,7 +98,7 @@ namespace ComicHoarder.WebData
         {
             List<Publisher> publishers = new List<Publisher>();
             CVSearchPublisher.response response = ConvertToPublisherSearchResponse(xml);
-            foreach (ComicHoarder.WebData.CVSearchPublisher.responseResultsPublisher comicvinepublisher in response.results[0].publisher)
+            foreach (ComicHoarder.WebDataProvider.CVSearchPublisher.responseResultsPublisher comicvinepublisher in response.results[0].publisher)
             {
                 Publisher publisher = new Publisher();
                 publisher.id = ParseHelper.ParseInt(comicvinepublisher.id);
@@ -115,7 +115,7 @@ namespace ComicHoarder.WebData
         {
             CVQueryPublisher.response response = ConvertToPublisherResponse(xml);
             List<Volume> volumes = new List<Volume>();
-            foreach (ComicHoarder.WebData.CVQueryPublisher.responseResultsVolumesVolume comicvinevolume in response.results[0].volumes[0].volume)
+            foreach (ComicHoarder.WebDataProvider.CVQueryPublisher.responseResultsVolumesVolume comicvinevolume in response.results[0].volumes[0].volume)
             {
                 Volume volume = new Volume();
                 volume.id = ParseHelper.ParseInt(comicvinevolume.id);
@@ -131,7 +131,7 @@ namespace ComicHoarder.WebData
             List<Issue> issues = new List<Issue>();
             if (response.results[0].issues != null)
             {
-                foreach (ComicHoarder.WebData.CVQueryVolume.responseResultsIssuesIssue comicvineissue in response.results[0].issues[0].issue)
+                foreach (ComicHoarder.WebDataProvider.CVQueryVolume.responseResultsIssuesIssue comicvineissue in response.results[0].issues[0].issue)
                 {
                     Issue issue = new Issue();
                     issue.id = ParseHelper.ParseInt(comicvineissue.id);
