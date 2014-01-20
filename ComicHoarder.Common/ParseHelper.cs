@@ -43,11 +43,11 @@ namespace ComicHoarder.Common
 
         public static string GetEnclosedString(this string s, string begin, string end)
         {
-            int beginPos = s.IndexOf(begin, 0);
+            int beginPos = begin == "" ? 0 : s.IndexOf(begin, 0);
             while (beginPos >= 0)
             {
                 int start = beginPos + begin.Length;
-                int stop = s.IndexOf(end, start);
+                int stop = end == "" ? s.Length : s.IndexOf(end, start);
                 if (stop < 0)
                 {
                     return "";

@@ -15,11 +15,11 @@ namespace ComicHoarder.EComic
 
         public EComicService()
         {
-            dataReader = new EComicXMLDataReader();
+            dataReader = new ComicVineEComicXMLDataReader();
             compressionController = new ZipController();
         }
 
-        public EComicService(EComicXMLDataReader dataReader, ICompressionController compressionController)
+        public EComicService(ComicVineEComicXMLDataReader dataReader, ICompressionController compressionController)
         {
             this.dataReader = dataReader;
             this.compressionController = compressionController;

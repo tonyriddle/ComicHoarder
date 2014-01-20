@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace ComicHoarder.EComic
 {
-    public class EComicXMLDataReader : IEComicDataReader
+    public class ComicVineEComicXMLDataReader : IEComicDataReader
     {
         public Issue ReadIssueData(string comicInfo)
         {

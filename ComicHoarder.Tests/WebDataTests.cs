@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using ComicHoarder.Common;
 using ComicHoarder.WebDataProvider;
+using ComicHoarder.Repository;
 
 namespace ComicHoarder.Tests
 {

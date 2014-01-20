@@ -20,7 +20,7 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void CanReadXMLIssueDataFromEComic()
         {
-            EComicXMLDataReader reader = new EComicXMLDataReader();
+            ComicVineEComicXMLDataReader reader = new ComicVineEComicXMLDataReader();
             string comicInfo = File.ReadAllText(TestXMLCRComicInfoFileName);
             Issue issue = reader.ReadIssueData(comicInfo);
             Assert.IsTrue(issue.id == 9383);
@@ -60,9 +60,19 @@ namespace ComicHoarder.Tests
         public void CanExtractCVIDFromComicInfoNotes()
         {
             string notes = "Scraped metadata from ComicVine [CVDB9383] on 2013.06.03 23:14:42.";
-            EComicXMLDataReader dataReader = new EComicXMLDataReader();
+            ComicVineEComicXMLDataReader dataReader = new ComicVineEComicXMLDataReader();
             string id = dataReader.GetCVIDFromNotes(notes);
             Assert.IsTrue(id == "9383");
+        }
+
+        [TestMethod]
+        public void CanHandleNoCVIDFromComicInfoNotes()
+        {
+            string notes = "";
+            ComicVineEComicXMLDataReader dataReader = new ComicVineEComicXMLDataReader();
+            string id = dataReader.GetCVIDFromNotes(notes);
+            Assert.IsTrue(id == "");
+
         }
 
         [TestMethod]
@@ -81,7 +91,7 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void ServiceCanFindIssuesInPath()
         {
-            EComicService eComicService = new EComicService();
+            var eComicService = new EComicService();
             List<string> filenames = eComicService.FindIssuesInPath(TestPath, false);
             Assert.IsTrue(filenames.Exists(ContainsBlueBeetle003));
         }
@@ -89,9 +99,19 @@ namespace ComicHoarder.Tests
         [TestMethod]
         public void ServiceCanFindIssuesInPathSubDirectory()
         {
-            EComicService eComicService = new EComicService();
+            var eComicService = new EComicService();
             List<string> filenames = eComicService.FindIssuesInPath(TestPath, true);
             Assert.IsTrue(filenames.Exists(ContainsBlueBeetle006));
+        }
+
+        [TestMethod]
+        public void ServiceCanFindIssuesInPathAndReturnIssues()
+        {
+            var eComicService = new EComicService();
+            List<Issue> issues = eComicService.GetIssues(TestPath, true);
+            Assert.IsTrue(issues.Count == 6); 
+            Assert.IsTrue(issues[0].id == 9383);
+            Assert.IsTrue(issues[5].id == 226638);
         }
 
         private static bool ContainsBlueBeetle003(String s)

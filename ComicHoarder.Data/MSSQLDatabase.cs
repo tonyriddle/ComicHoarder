@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using ComicHoarder.Common;
 
-namespace ComicHoarder
+namespace ComicHoarder.Repository
 {
     public class MSSQLDatabase : IRepository
     {
