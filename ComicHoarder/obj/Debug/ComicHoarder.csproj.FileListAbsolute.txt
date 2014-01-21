@@ -110,3 +110,7 @@ C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.Properties.Resources.
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.csproj.GenerateResource.Cache
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.exe
 C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\ComicHoarder.pdb
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\PrimaryWindow.baml
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\PrimaryWindow.g.cs
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\Controls\Publishers.baml
+C:\GitHub\ComicHoarder\ComicHoarder\obj\Debug\Controls\Publishers.g.cs

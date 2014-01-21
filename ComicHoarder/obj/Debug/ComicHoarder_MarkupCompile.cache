@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\GitHub\ComicHoarder\ComicHoarder\App.xaml
-22061209473
+41583126279
 
-12-1222935180
+14-182624874
 211859683781
-AddPublisher.xaml;MainWindow.xaml;
+AddPublisher.xaml;Controls\Publishers.xaml;MainWindow.xaml;PrimaryWindow.xaml;
 
 False
 

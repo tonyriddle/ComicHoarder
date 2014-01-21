@@ -11,4 +11,3 @@ C:\GitHub\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.dll
 C:\GitHub\ComicHoarder\ComicHoarder.Common\bin\Debug\ComicHoarder.Entities.pdb
 C:\GitHub\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.dll
 C:\GitHub\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Entities.pdb
-C:\GitHub\ComicHoarder\ComicHoarder.Common\obj\Debug\ComicHoarder.Common.csprojResolveAssemblyReference.cache
