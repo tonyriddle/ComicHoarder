@@ -25,14 +25,14 @@ namespace ComicHoarder.EComic
             this.compressionController = compressionController;
         }
 
-        public Issue GetComicInfo(string filename)
+        public Issue GetComicInfoFromEComic(string filename)
         {
             compressionController.SetFileName(filename);
             string data = compressionController.ExtractTextFile("ComicInfo.xml");
             return dataReader.ReadIssueData(data);
         }
 
-        public List<string> FindIssuesInPath(string pathName, bool searchSubDirectory)
+        public List<string> GetIssueNamesInPath(string pathName, bool searchSubDirectory)
         {
             string[] filePaths;
             if (searchSubDirectory)
@@ -46,13 +46,13 @@ namespace ComicHoarder.EComic
             return filePaths.ToList<string>();
         }
 
-        public List<Issue> GetIssues(string pathname, bool searchSubDirectory)
+        public List<Issue> GetIssuesInPath(string pathname, bool searchSubDirectory)
         {
             List<Issue> issues = new List<Issue>();
-            List<string> fileNames = FindIssuesInPath(pathname, searchSubDirectory);
+            List<string> fileNames = GetIssueNamesInPath(pathname, searchSubDirectory);
             foreach (string filename in fileNames)
             {
-                issues.Add(GetComicInfo(filename));
+                issues.Add(GetComicInfoFromEComic(filename));
             }
             return issues;
         }

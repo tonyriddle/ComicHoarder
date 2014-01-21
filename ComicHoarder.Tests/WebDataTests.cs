@@ -279,6 +279,10 @@ namespace ComicHoarder.Tests
             volume.description = "reprints spider-man 1 to 650";
             Assert.IsTrue(reprintDetector.DetectReprint(volume));
             Assert.IsFalse(volume.collectable);
+            volume.collectable = true;
+            volume.description = "collects blue beetle 4 through 7";
+            Assert.IsTrue(reprintDetector.DetectReprint(volume));
+            Assert.IsFalse(volume.collectable);
         }
 
         [TestMethod]

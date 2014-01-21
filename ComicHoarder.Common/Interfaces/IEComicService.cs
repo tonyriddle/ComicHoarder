@@ -4,6 +4,8 @@ namespace ComicHoarder.Common
 {
     public interface IEComicService
     {
-        List<Issue> GetIssues(string pathname, bool searchSubDirectory);
+        Issue GetComicInfoFromEComic(string filename);
+        List<string> GetIssueNamesInPath(string pathName, bool searchSubDirectory);
+        List<Issue> GetIssuesInPath(string pathname, bool searchSubDirectory);
     }
 }

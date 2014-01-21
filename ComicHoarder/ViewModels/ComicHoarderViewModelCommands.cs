@@ -187,7 +187,7 @@ namespace ComicHoarder.ViewModels
         private bool CollectMissingIssues()
         {
             IEComicService eComicService = new EComicService();
-            List<Issue> issues = eComicService.GetIssues(Path, true);
+            List<Issue> issues = eComicService.GetIssuesInPath(Path, true);
             int count = 0;
             foreach(Issue issue in issues)
             {

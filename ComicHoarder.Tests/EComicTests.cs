@@ -79,7 +79,7 @@ namespace ComicHoarder.Tests
         public void ServiceCanReturnIssue()
         {
             EComicService eComicService = new EComicService();
-            Issue issue = eComicService.GetComicInfo(TestCBZComicFileName);
+            Issue issue = eComicService.GetComicInfoFromEComic(TestCBZComicFileName);
             Assert.IsTrue(issue.id == 9383);
             Assert.IsTrue(issue.name == "Bugs the Squids");
             Assert.IsTrue(issue.summary.StartsWith("The Squid Gang crash the party"));
@@ -92,7 +92,7 @@ namespace ComicHoarder.Tests
         public void ServiceCanFindIssuesInPath()
         {
             var eComicService = new EComicService();
-            List<string> filenames = eComicService.FindIssuesInPath(TestPath, false);
+            List<string> filenames = eComicService.GetIssueNamesInPath(TestPath, false);
             Assert.IsTrue(filenames.Exists(ContainsBlueBeetle003));
         }
 
@@ -100,7 +100,7 @@ namespace ComicHoarder.Tests
         public void ServiceCanFindIssuesInPathSubDirectory()
         {
             var eComicService = new EComicService();
-            List<string> filenames = eComicService.FindIssuesInPath(TestPath, true);
+            List<string> filenames = eComicService.GetIssueNamesInPath(TestPath, true);
             Assert.IsTrue(filenames.Exists(ContainsBlueBeetle006));
         }
 
@@ -108,7 +108,7 @@ namespace ComicHoarder.Tests
         public void ServiceCanFindIssuesInPathAndReturnIssues()
         {
             var eComicService = new EComicService();
-            List<Issue> issues = eComicService.GetIssues(TestPath, true);
+            List<Issue> issues = eComicService.GetIssuesInPath(TestPath, true);
             Assert.IsTrue(issues.Count == 6); 
             Assert.IsTrue(issues[0].id == 9383);
             Assert.IsTrue(issues[5].id == 226638);
