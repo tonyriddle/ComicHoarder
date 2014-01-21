@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ComicHoarder.Controls
 {
     /// <summary>
-    /// Interaction logic for Publishers.xaml
+    /// Interaction logic for IssuesToCollectControl.xaml
     /// </summary>
-    public partial class Publishers : UserControl
+    public partial class IssuesToCollectControl : UserControl
     {
-        public Publishers()
+        public IssuesToCollectControl()
         {
             InitializeComponent();
         }

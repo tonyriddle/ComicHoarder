@@ -71,8 +71,23 @@
       <SubType>Code</SubType>
       <DependentUpon>AddPublisher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Publishers.xaml.cs">
-      <DependentUpon>Publishers.xaml</DependentUpon>
+    <Compile Include="Controls\CollectControl.xaml.cs">
+      <DependentUpon>CollectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DashboardControl.xaml.cs">
+      <DependentUpon>DashboardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IssuesControl.xaml.cs">
+      <DependentUpon>IssuesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\IssuesToCollectControl.xaml.cs">
+      <DependentUpon>IssuesToCollectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PublishersControl.xaml.cs">
+      <DependentUpon>PublishersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VolumesControl.xaml.cs">
+      <DependentUpon>VolumesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="PrimaryWindow.xaml.cs">
       <DependentUpon>PrimaryWindow.xaml</DependentUpon>
@@ -87,7 +102,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Publishers.xaml">
+    <Page Include="Controls\CollectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DashboardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IssuesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\IssuesToCollectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PublishersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VolumesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
