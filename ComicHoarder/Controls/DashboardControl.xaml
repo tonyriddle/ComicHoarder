@@ -2,10 +2,37 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TextBlock>Dashboard Control</TextBlock>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,2,2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="2,2,2,2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Row="0" Grid.Column="1" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <chartingToolkit:Chart Grid.Column="0" Name="pieChart" Title="Issues By Selected Publisher" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,2,2" Foreground="DarkGray" >
+                <chartingToolkit:PieSeries x:Name="piechart" IsSelectionEnabled="True" HorizontalAlignment="Stretch" Margin="2,2,2,2" VerticalAlignment="Stretch" />
+            </chartingToolkit:Chart>
+            <chartingToolkit:Chart Grid.Column="1" Name="lineChart" Title="Published/Collected by Year" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,2,2" Foreground="DarkGray">
+                <chartingToolkit:LineSeries x:Name="linechart" IsSelectionEnabled="True" HorizontalAlignment="Stretch" Margin="2,2,2,2" VerticalAlignment="Stretch" />
+            </chartingToolkit:Chart>
+        </Grid>
+        <chartingToolkit:Chart Grid.Row="2" Name="barChart" Title="To Collect By Publisher" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2,2,2,2" Foreground="DarkGray">
+            <chartingToolkit:BarSeries x:Name="columnchart" IsSelectionEnabled="True" HorizontalAlignment="Stretch" Margin="2,2,2,2" VerticalAlignment="Stretch" />
+        </chartingToolkit:Chart>
     </Grid>
 </UserControl>
